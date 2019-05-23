@@ -68,6 +68,11 @@ Breadcrumbs::for('comunidadListaEnParroquia', function ($trail,$parroquia) {
     $trail->push('Comunidades en '.$parroquia->nombre, route('comunidadListaEnParroquia',$parroquia->id));
 });
 
+Breadcrumbs::for('comunidadesLista', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Comunidades', route('comunidadesLista'));
+});
+
 
 /*asociaciones*/
 Breadcrumbs::for('asociaciones', function ($trail) {

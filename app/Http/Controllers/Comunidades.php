@@ -8,13 +8,17 @@ use iopro\Models\Parroquia;
 use iopro\DataTables\ComunidadDataTable;
 use iopro\DataTables\ComunidadListaEnParroquiaDataTable;
 use iopro\Models\Asociacion;
+use iopro\DataTables\ComunidadListaDataTable;
+use iopro\DataTables\ComunidadesEnAsociacionActivaDataTable;
+use iopro\Models\Periodo;
+use Illuminate\Support\Facades\Auth;
 class Comunidades extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['role:Administrador']);
+        $this->middleware(['role:Administrador|Asociacion']);
     }
-
+    
     public function index(ComunidadDataTable $dataTable,$idParroquia)
     {
     	$data = array('parroquia' => Parroquia::findOrFail($idParroquia));
@@ -98,6 +102,13 @@ class Comunidades extends Controller
     {
         $data = array('parroquia' => Parroquia::findOrFail($idParroquia));
         return $dataTable->with('idParroquia',$idParroquia)->render('comunidades.listaEnParroquia',$data);
+    }
+    
+
+
+    public function comunidadesLista(ComunidadListaDataTable $dataTable)
+    {
+        return $dataTable->render('comunidades.lista');
     }
     
 

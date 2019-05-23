@@ -108,8 +108,8 @@
                     </li>
 
                     <li class="nav-item">
-                        <a href="{{ route('parroquiasLista') }}" class="nav-link" id="m_parroquia">
-                            <i class="fas fa-map-marked"></i> <span>Parroquias</span>
+                        <a href="{{ route('comunidadesLista') }}" class="nav-link" id="m_comunidad">
+                        <i class="fas fa-map-marker-alt"></i> <span>Comunidades</span>
                         </a>
                     </li>
 
@@ -118,19 +118,29 @@
 
                 
 
-                @if(Auth::user()->has('periodosActivos'))
+                @if(Auth::user()->roles('Asociacion'))
+                
+                @if(count(Auth::user()->periodosActivos)>0)
                     <li class="nav-item-header">
-                        <div class="text-uppercase font-size-xs line-height-xs">Asociaciones</div> 
+                        <div class="text-uppercase font-size-xs line-height-xs">Comunidades</div> 
                         <i class="icon-menu" title="Main"></i>
                     </li>
                     @foreach(Auth::user()->periodosActivos as $userPeriodoActivo)
                         
-                        <li class="nav-item">
-                            <a href="{{ route('parroquiasLista') }}" class="nav-link" id="m_parroquia">
-                                <i class="fas fa-map-marked"></i> <span>{{ $userPeriodoActivo->nombre }}</span>
-                            </a>
-                        </li>
+                        @if(count($userPeriodoActivo->comunidades)>0)
+
+                            @foreach($userPeriodoActivo->comunidades as $comu)
+                                <li class="nav-item">
+                                    <a href="{{ route('propiedades',$comu->id) }}" class="nav-link" id="m_asociacionActivas{{ $userPeriodoActivo->id }}">
+                                        <i class="fas fa-map-marker-alt"></i> <span>{{ $comu->nombre }}</span>
+                                    </a>
+                                </li>
+                            @endforeach
+                        @endif
+
                     @endforeach
+                @endif
+
                 @endif
               
 
