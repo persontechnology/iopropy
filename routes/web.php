@@ -64,6 +64,17 @@ Route::group(['middleware' => ['role:Administrador']], function () {
 
 
 Route::group(['middleware' => ['role:Asociacion']], function () {
+    
+    
+
+    // asociaciones
+    Route::get('/mi-asociaciones','Propiedades@asociaciones')->name('miAsociaciones');
+    
+    // comunidades
+    Route::get('/mi-comunidades/{idAso}','Propiedades@comunidades')->name('miComunidades');
+
     //propiedades
     Route::get('/propiedades/{idComunidad}','Propiedades@index')->name('propiedades');
+    Route::get('/propiedades-nuevo/{idComunidad}','Propiedades@nuevo')->name('nuevaPropiedad');
+    
 });
