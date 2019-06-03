@@ -59,7 +59,7 @@ class Autoridades extends Controller
     }
 
 
-    public function indexAso(Request $request,AutoridadesEnAsociacionDataTable $dataTable,$idAso)
+    public function indexAso(AutoridadesEnAsociacionDataTable $dataTable,$idAso)
     {
         $autoridades=User::role('Asociacion')->get();
         $aso=Asociacion::findOrFail($idAso);
@@ -137,7 +137,7 @@ class Autoridades extends Controller
         $user=User::find($request->id);
         $user->name=$request->name;
         $user->email=$request->email;
-        if($request->has($request->password)){
+        if($request->password){
             $user->password=Hash::make($request->password);
         }
         $user->nombres=$request->nombres;

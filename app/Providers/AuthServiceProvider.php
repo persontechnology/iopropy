@@ -4,7 +4,10 @@ namespace iopro\Providers;
 
 use Illuminate\Support\Facades\Gate;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
-
+use iopro\User;
+use iopro\Policies\UserPolicy;
+use iopro\Models\Comunidad;
+use iopro\Policies\ComunidadPolicy;
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -13,7 +16,8 @@ class AuthServiceProvider extends ServiceProvider
      * @var array
      */
     protected $policies = [
-        // 'iopro\Model' => 'iopro\Policies\ModelPolicy',
+        User::class => UserPolicy::class,
+        Comunidad::class=>ComunidadPolicy::class,
     ];
 
     /**

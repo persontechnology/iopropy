@@ -132,3 +132,19 @@ Breadcrumbs::for('nuevaPropiedad', function ($trail,$comu) {
     $trail->parent('propiedades',$comu);
     $trail->push('Nueva propiedad en '.$comu->nombre, route('nuevaPropiedad',$comu->id));
 });
+
+
+// usuarios
+Breadcrumbs::for('usuarios', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Usuarios', route('usuarios'));
+});
+
+Breadcrumbs::for('nuevoUsuario', function ($trail) {
+    $trail->parent('usuarios');
+    $trail->push('Nuevo usuario', route('nuevoUsuario'));
+});
+Breadcrumbs::for('editarUsuario', function ($trail,$user) {
+    $trail->parent('usuarios');
+    $trail->push('Editar usuario', route('editarUsuario',$user->id));
+});

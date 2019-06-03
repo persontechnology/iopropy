@@ -1,12 +1,12 @@
 @extends('layouts.app',['title'=>'Autoridades'])
 
 
-@section('breadcrumbs', Breadcrumbs::render('editarAutoridad',$user))
+@section('breadcrumbs', Breadcrumbs::render('editarUsuario',$user))
 
 @section('acciones')
 
   <div class="breadcrumb justify-content-center">
-    <a href="{{ route('autoridades') }}" class="breadcrumb-elements-item">
+    <a href="{{ route('usuarios') }}" class="breadcrumb-elements-item">
         <i class="fas fa-arrow-left"></i>
         Atras
     </a>
@@ -17,11 +17,10 @@
 @section('content')
 <div class="card">
   <div class="card-body">
-    <form action="{{ route('actualizarAutoridad') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('actualizarUsuario') }}" method="post" enctype="multipart/form-data">
       @csrf
       <input type="hidden" name="id" value="{{ $user->id }}" required="">
-      <div class="row">
-          <div class="col-md-6">
+      
               <fieldset>
                   <legend class="font-weight-semibold"><i class="icon-reading mr-2"></i> Detalle personal</legend>
 
@@ -158,84 +157,30 @@
                           </div>
                       </div>
                   </div>
-
-              </fieldset>
-          </div>
-
-          <div class="col-md-6">
-              <fieldset>
-                  <legend class="font-weight-semibold"><i class="icon-truck mr-2"></i> Información de cuenta</legend>
-
-             
-
                   <div class="form-group row">
-                      <label for="name" class="col-lg-3 col-form-label">{{ __('Name') }} de usuario<span class="text-danger">*</span></label>
-
-                      <div class="col-lg-9">
-                          <input id="name" type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" name="name" value="{{ old('name',$user->name) }}" required autocomplete="name">
-
-                          @if ($errors->has('name'))
-                              <span class="invalid-feedback" role="alert">
-                                  <strong>{{ $errors->first('name') }}</strong>
-                              </span>
-                          @endif
-                      </div>
-                  </div>
-
-                  <div class="form-group row">
-                      <label for="email" class="col-lg-3 col-form-label">{{ __('E-Mail Address') }}<span class="text-danger">*</span></label>
-
-                      <div class="col-lg-9">
-                          <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email',$user->email) }}" required autocomplete="email">
-
-                          @if ($errors->has('email'))
-                              <span class="invalid-feedback" role="alert">
-                                  <strong>{{ $errors->first('email') }}</strong>
-                              </span>
-                          @endif
-                      </div>
-                  </div>
-
-                  <div class="form-group row">
-                      <label for="password" class="col-lg-3 col-form-label">{{ __('Password') }}<span class="text-danger">*</span></label>
-
-                      <div class="col-lg-9">
-                          <input id="password" type="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" name="password"  autocomplete="new-password">
-
-                          @if ($errors->has('password'))
-                              <span class="invalid-feedback" role="alert">
-                                  <strong>{{ $errors->first('password') }}</strong>
-                              </span>
-                          @endif
-                      </div>
-                  </div>
-
-                  <div class="form-group row">
-                      <label for="password-confirm" class="col-lg-3 col-form-label">{{ __('Confirm Password') }}<span class="text-danger">*</span></label>
-
-                      <div class="col-lg-9">
-                          <input id="password-confirm" type="password" class="form-control" name="password_confirmation" autocomplete="new-password">
-                      </div>
-                  </div>
-
-
-                  <div class="form-group row">
-                      <label class="col-lg-3 col-form-label">Detalle:</label>
-                      <div class="col-lg-9">
-                          <textarea class="form-control{{ $errors->has('detalle') ? ' is-invalid' : '' }}" name="detalle" id="detalle"  placeholder="Ingrese..">{{ old('detalle',$user->detalle) }} </textarea>
-                          @if ($errors->has('detalle'))
-                              <span class="invalid-feedback" role="alert">
-                                  <strong>{{ $errors->first('detalle') }}</strong>
-                              </span>
-                          @endif
+                        <label class="col-lg-3 col-form-label">Detalle:</label>
+                        <div class="col-lg-9">
+                            <textarea class="form-control{{ $errors->has('detalle') ? ' is-invalid' : '' }}" name="detalle" id="detalle"  placeholder="Ingrese..">{{ old('detalle',$user->detalle) }} </textarea>
+                            @if ($errors->has('detalle'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('detalle') }}</strong>
+                                </span>
+                            @endif
+                        </div>
                     </div>
-        
+
+                    @role('Administrador')
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input" name="rol" id="exampleCheck1" {{ $user->hasRole('Asociacion')?'checked':'' }}>
+                        <label class="form-check-label" for="exampleCheck1">Asignar rol de Autoridad</label>
+                    </div>
+                    @endrole
+
               </fieldset>
-          </div>
-      </div>
+      
 
       <div class="text-right">
-          <button type="submit" class="btn btn-primary">{{__('Guardar')}} <i class="icon-paperplane ml-2"></i></button>
+          <button type="submit" class="btn btn-primary">{{__('Actualizar')}} <i class="icon-paperplane ml-2"></i></button>
       </div>
     </form>
   </div>
@@ -243,7 +188,7 @@
 
 
 <script>
-	$('#m_autoridades').addClass('active');
+	$('#m_usuarios').addClass('active');
    $('#tipoIdentificacion').on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
         var tp=clickedIndex;
         if (tp==5) {

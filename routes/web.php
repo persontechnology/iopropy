@@ -76,5 +76,15 @@ Route::group(['middleware' => ['role:Asociacion']], function () {
     //propiedades
     Route::get('/propiedades/{idComunidad}','Propiedades@index')->name('propiedades');
     Route::get('/propiedades-nuevo/{idComunidad}','Propiedades@nuevo')->name('nuevaPropiedad');
+    Route::post('/propiedades-guardar','Propiedades@guardar')->name('guardarPropiedad');
+
+
     
 });
+
+Route::get('/usuarios','Usuarios@index')->name('usuarios');
+Route::get('/usuarios-nuevo','Usuarios@nuevo')->name('nuevoUsuario');
+Route::post('/usuarios-guardar','Usuarios@guardar')->name('guardarUsuario');
+Route::get('/usuarios-editar/{idUser}','Usuarios@editar')->name('editarUsuario');
+Route::post('/usuarios-actualizar','Usuarios@actualizar')->name('actualizarUsuario');
+Route::get('/usuarios-eliminar/{idUser}','Usuarios@eliminar')->name('eliminarUsuario');

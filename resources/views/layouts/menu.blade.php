@@ -98,13 +98,17 @@
 
                 @endrole
 
-                
+                <li class="nav-item">
+                    <a href="{{ route('usuarios') }}" class="nav-link" id="m_usuarios">
+                        <i class="fas fa-users"></i><span>Usuarios</span>
+                    </a>
+                </li>
 
                 @if(Auth::user()->roles('Asociacion'))
                 
                 <li class="nav-item">
                     <a href="{{ route('miAsociaciones') }}" class="nav-link" id="m_miasociaciones">
-                        <i class="fas fa-map-marker-alt"></i>Mis Asociaciones</span>
+                        <i class="fas fa-map-marker-alt"></i><span>Mis Asociaciones</span>
                     </a>
                 </li>
 

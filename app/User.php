@@ -52,6 +52,6 @@ class User extends Authenticatable
         return $this->belongsToMany(Asociacion::class, 'periodo', 'users_id', 'asociacion_id')
             ->as('aso')
             ->withPivot('id')
-            ->where('estado',true);
+            ->wherePivot('estado',true);
     }
 }

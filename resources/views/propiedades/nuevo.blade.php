@@ -15,18 +15,27 @@
 
 @section('content')
 
-<script src="https://cdn.ckeditor.com/ckeditor5/12.1.0/classic/ckeditor.js"></script>
-<script src="https://cdn.ckeditor.com/ckeditor5/12.1.0/classic/translations/es.js"></script>
-
-
 <div class="card">
   <div class="card-body">
-    <form action="{{ route('guardarAutoridad') }}" method="post" enctype="multipart/form-data">
+    <form action="{{ route('guardarPropiedad') }}" method="post" enctype="multipart/form-data">
       @csrf
+      <input type="hidden" name="comunidad" value="{{ $comu->id }}" required>
       <div class="row">
           <div class="col-md-6">
               <fieldset>
-                  <legend class="font-weight-semibold"><i class="icon-reading mr-2"></i> Detalle personal</legend>
+                  <legend class="font-weight-semibold"><i class="icon-reading mr-2"></i> Complete la información de la propiedad</legend>
+                
+                  <div class="form-group row">
+                    <label class="col-lg-3 col-form-label" for="codigo">Código<span class="text-danger">*</span></label>
+                    <div class="col-lg-9">
+                        <input type="text" class="form-control{{ $errors->has('codigo') ? ' is-invalid' : '' }}" name="codigo" id="codigo" placeholder="Ingrese.." required="" value="{{ old('codigo',$comu->codigo.'-'.str_random(15)) }}">
+                        @if ($errors->has('codigo'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('codigo') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                </div>
 
                   <div class="form-group row">
                       <label class="col-lg-3 col-form-label" for="medidaTotal">Medidad total<span class="text-danger">*</span></label>
@@ -93,32 +102,16 @@
                 </div>
 
                 
+                
+                
 
-                {{--  latitud  --}}
-                <div class="form-group row">
-                    <label class="col-lg-3 col-form-label" for="latitud">latitud<span class="text-danger">*</span></label>
-                    <div class="col-lg-9">
-                        <input type="text" class="form-control{{ $errors->has('latitud') ? ' is-invalid' : '' }}" name="latitud" id="latitud" placeholder="Ingrese.." required="" value="{{ old('latitud') }}">
-                        @if ($errors->has('latitud'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('latitud') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
 
-                {{--  longitud  --}}
-                <div class="form-group row">
-                    <label class="col-lg-3 col-form-label" for="longitud">longitud<span class="text-danger">*</span></label>
-                    <div class="col-lg-9">
-                        <input type="text" class="form-control{{ $errors->has('longitud') ? ' is-invalid' : '' }}" name="longitud" id="longitud" placeholder="Ingrese.." required="" value="{{ old('longitud') }}">
-                        @if ($errors->has('longitud'))
-                            <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('longitud') }}</strong>
-                            </span>
-                        @endif
-                    </div>
-                </div>
+              </fieldset>
+          </div>
+
+          <div class="col-md-6">
+            
+            <fieldset>
                 
                 {{--  precio estimado  --}}
                 
@@ -138,11 +131,11 @@
                 <div class="form-group row">
                     <label class="col-lg-3 col-form-label" >serviciosBasicos:<span class="text-danger">*</span></label>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input {{ $errors->has('serviciosBasicos') ? ' is-invalid' : '' }}" value="Si" id="serviciosBasicosSi" name="serviciosBasicos"  required {{ old('serviciosBasicos')=='Si'?'checked':'checked' }}>
+                        <input type="radio" class="custom-control-input {{ $errors->has('serviciosBasicos') ? ' is-invalid' : '' }}" value="1" id="serviciosBasicosSi" name="serviciosBasicos"  required {{ old('serviciosBasicos')=='Si'?'checked':'checked' }}>
                         <label class="custom-control-label" for="serviciosBasicosSi">Si</label>
                     </div>
                     <div class="custom-control custom-radio mb-3">
-                        <input type="radio" class="custom-control-input{{ $errors->has('serviciosBasicos') ? ' is-invalid' : '' }}" value="No" id="serviciosBasicosNo" name="serviciosBasicos" required {{ old('serviciosBasicos')=='No'?'checked':'' }}>
+                        <input type="radio" class="custom-control-input{{ $errors->has('serviciosBasicos') ? ' is-invalid' : '' }}" value="0" id="serviciosBasicosNo" name="serviciosBasicos" required {{ old('serviciosBasicos')=='No'?'checked':'' }}>
                         <label class="custom-control-label" for="serviciosBasicosNo">No</label>
                         
                         @if ($errors->has('serviciosBasicos'))
@@ -158,11 +151,11 @@
                 <div class="form-group row">
                     <label class="col-lg-3 col-form-label" >tieneCasa:<span class="text-danger">*</span></label>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input {{ $errors->has('tieneCasa') ? ' is-invalid' : '' }}" value="Si" id="tieneCasaSi" name="tieneCasa"  required {{ old('tieneCasa')=='Si'?'checked':'checked' }}>
+                        <input type="radio" class="custom-control-input {{ $errors->has('tieneCasa') ? ' is-invalid' : '' }}" value="1" id="tieneCasaSi" name="tieneCasa"  required {{ old('tieneCasa')=='Si'?'checked':'checked' }}>
                         <label class="custom-control-label" for="tieneCasaSi">Si</label>
                     </div>
                     <div class="custom-control custom-radio mb-3">
-                        <input type="radio" class="custom-control-input{{ $errors->has('tieneCasa') ? ' is-invalid' : '' }}" value="No" id="tieneCasaNo" name="tieneCasa" required {{ old('tieneCasa')=='No'?'checked':'' }}>
+                        <input type="radio" class="custom-control-input{{ $errors->has('tieneCasa') ? ' is-invalid' : '' }}" value="0" id="tieneCasaNo" name="tieneCasa" required {{ old('tieneCasa')=='No'?'checked':'' }}>
                         <label class="custom-control-label" for="tieneCasaNo">No</label>
                         
                         @if ($errors->has('tieneCasa'))
@@ -176,11 +169,11 @@
                 <div class="form-group row">
                     <label class="col-lg-3 col-form-label" >Tiene camino:<span class="text-danger">*</span></label>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input {{ $errors->has('camino') ? ' is-invalid' : '' }}" value="Si" id="CaminoSi" name="camino"  required {{ old('camino')=='Si'?'checked':'checked' }}>
+                        <input type="radio" class="custom-control-input {{ $errors->has('camino') ? ' is-invalid' : '' }}" value="1" id="CaminoSi" name="camino"  required {{ old('camino')=='Si'?'checked':'checked' }}>
                         <label class="custom-control-label" for="CaminoSi">Si</label>
                     </div>
                     <div class="custom-control custom-radio mb-3">
-                        <input type="radio" class="custom-control-input{{ $errors->has('camino') ? ' is-invalid' : '' }}" value="No" id="CaminoNo" name="camino" required {{ old('camino')=='No'?'checked':'' }}>
+                        <input type="radio" class="custom-control-input{{ $errors->has('camino') ? ' is-invalid' : '' }}" value="0" id="CaminoNo" name="camino" required {{ old('camino')=='No'?'checked':'' }}>
                         <label class="custom-control-label" for="CaminoNo">No</label>
                         
                         @if ($errors->has('camino'))
@@ -190,37 +183,48 @@
                         @endif
                     </div>
                 </div>
+                
+                @if(count($usuarios)>0)
 
-              </fieldset>
-          </div>
+                {{--  propietarios antiguos  --}}
+                <div class="form-group">
+                    <label for="propietariosAntiguo">Selecione propietario/s antiguo/s:<span class="text-danger">*</span></label>
+                    <select class="selectpicker show-tick form-control" name="propietariosAntiguo[]" required="" data-live-search="true" title="Selecione propietario/s antiguo/s..." data-header="Selecione propietario/s antiguo/s" multiple data-selected-text-format="count > 3">
+                        @foreach($usuarios as $uan)
+                            <option value="{{ $uan->id }}" data-tokens="{{ $uan->email }}" data-subtext="{{ $uan->identificacion }}" {{ (collect(old('propietariosAntiguo'))->contains($uan->id)) ? 'selected':'' }}>{{ $uan->nombres }} {{ $uan->apellidos }}</option>
+                        @endforeach
+                    </select>
+                </div>
 
-          <div class="col-md-6">
-              <fieldset>
-                  <legend class="font-weight-semibold"><i class="icon-truck mr-2"></i> Información de cuenta</legend>
 
-             
-                {{--  detalle  --}}
-                  <div class="form-group row">
-                      <div class="col-lg-12">
-                          <label for="detalle">Detalle</label>
-                          
-                          <textarea id="detalle" name="detalle" class="form-control{{ $errors->has('detalle') ? ' is-invalid' : '' }}">{{ old('name') }}</textarea>
 
-                          @if ($errors->has('detalle'))
-                              <span class="invalid-feedback" role="alert">
-                                  <strong>{{ $errors->first('detalle') }}</strong>
-                              </span>
-                          @endif
-                      </div>
-                  </div>
-        
-              </fieldset>
+                {{--  propietarios actualues  --}}
+
+                <div class="form-group">
+                    <label for="propietariosActuales">Selecione propietario/s actual/es:<span class="text-danger">*</span></label>
+                    <select class="selectpicker show-tick form-control" name="propietariosActuales[]" required="" data-live-search="true" title="Selecione propietario/s actual/es..." data-header="Selecione propietario/s actual/ess" multiple data-selected-text-format="count > 3">
+                        @foreach($usuarios as $uac)
+                            <option value="{{ $uac->id }}" data-tokens="{{ $uac->email }}" data-subtext="{{ $uac->identificacion }}" {{ (collect(old('propietariosActuales'))->contains($uac->id)) ? 'selected':'' }}>{{ $uac->nombres }} {{ $uac->apellidos }}</option>
+                        @endforeach
+                    </select>
+                </div>
+
+
+                @else
+                <div class="alert alert-info alert-dismissible alert-styled-left fade show" role="alert">
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <strong>No existe usuarios para asignar a la propiedad.</strong>
+                </div> 
+            @endif
+
+
+            </fieldset>
+            
           </div>
       </div>
-
-      <div class="text-right">
-          <button type="submit" class="btn btn-primary">{{__('Guardar')}} <i class="icon-paperplane ml-2"></i></button>
-      </div>
+    <button type="submit" class="btn btn-primary">{{__('Guardar')}} <i class="icon-paperplane ml-2"></i></button>
     </form>
   </div>
 </div>
@@ -228,20 +232,8 @@
 
 <script>
 	$('#m_miasociaciones').addClass('active');
-    $('#tipoIdentificacion').on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
-        var tp=clickedIndex;
-        if (tp==5) {
-            $('#identificacion').val('0000000000');
-        }else{
-            $('#identificacion').val('')
-        }
-    });
-
-    ClassicEditor.create( document.querySelector( '#detalle' ),{
-        language: 'es'
-    } )
-    .catch( error => {
-        console.error( error );
-    } );
+        
+    
+    
 </script>
 @endsection
