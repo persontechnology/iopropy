@@ -23,7 +23,7 @@
             <div class="sidebar-user-material-body">
                 <div class="card-body text-center">
                     <a href="#">
-                        <img src="{{ asset('global_assets/images/demo/users/face6.jpg') }}" class="img-fluid rounded-circle shadow-1 mb-3" width="80" height="80" alt="">
+                        <img src="{{ asset('img/users/face6.jpg') }}" class="img-fluid rounded-circle shadow-1 mb-3" width="80" height="80" alt="">
                     </a>
                     <h6 class="mb-0 text-white text-shadow-dark">{{ Auth::user()->name }}</h6>
                     <span class="font-size-sm text-white text-shadow-dark">{{ Auth::user()->email }}</span>
@@ -44,25 +44,7 @@
                             <span>Mi perfil</span>
                         </a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="icon-coins"></i>
-                            <span>My balance</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="icon-comment-discussion"></i>
-                            <span>Messages</span>
-                            <span class="badge bg-teal-400 badge-pill align-self-center ml-auto">58</span>
-                        </a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">
-                            <i class="icon-cog5"></i>
-                            <span>Account settings</span>
-                        </a>
-                    </li>
+                    
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="icon-switch2"></i>
@@ -121,7 +103,7 @@
                 @if(Auth::user()->roles('Asociacion'))
                 
                 <li class="nav-item">
-                    <a href="{{ route('miAsociaciones') }}" class="nav-link" id="">
+                    <a href="{{ route('miAsociaciones') }}" class="nav-link" id="m_miasociaciones">
                         <i class="fas fa-map-marker-alt"></i>Mis Asociaciones</span>
                     </a>
                 </li>

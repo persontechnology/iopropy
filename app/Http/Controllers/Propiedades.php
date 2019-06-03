@@ -31,7 +31,7 @@ class Propiedades extends Controller
             ])->first();
         
             if($asoPerteneceUsuario){
-                return $dataTable->with('idAso',$aso->id)->render('propiedades.comunidades');
+                return $dataTable->with('idAso',$aso->id)->render('propiedades.comunidades',['aso'=>$aso]);
             }
         return abort(403);
         

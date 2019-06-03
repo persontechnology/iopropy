@@ -17,12 +17,11 @@
      <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
       <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <!-- Global stylesheets -->
-    <link href="https://fonts.googleapis.com/css?family=Roboto:400,300,100,500,700,900" rel="stylesheet" type="text/css">
-    <link href="{{ asset('global_assets/css/icons/icomoon/styles.min.css') }}" rel="stylesheet" type="text/css">
-    <link rel="stylesheet" href="{{ asset('global_assets/css/icons/fontawesome/styles.min.css') }}">
+    <link href="{{ asset('fonts/roboto.css') }}" rel="stylesheet" type="text/css">
+    <link href="{{ asset('fonts/icomoon/styles.min.css') }}" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="{{ asset('fonts/fontawesome/styles.min.css') }}">
 
     <link href="{{ asset('assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css">
     <link href="{{ asset('assets/css/bootstrap_limitless.min.css') }}" rel="stylesheet" type="text/css">
@@ -31,28 +30,24 @@
     <link href="{{ asset('assets/css/colors.min.css') }}" rel="stylesheet" type="text/css">
     <!-- /global stylesheets -->
 
-    <!-- Core JS files -->
-    <script src="{{ asset('global_assets/js/plugins/loaders/blockui.min.js') }}"></script>
-    <script src="{{ asset('global_assets/js/plugins/ui/ripple.min.js') }}"></script>
-    <!-- /core JS files -->
-
-    <!-- Theme JS files -->
-    <script src="{{ asset('global_assets/js/plugins/tables/datatables/datatables.min.js') }}"></script>
-    <script src="{{ asset('global_assets/js/plugins/tables/datatables/extensions/buttons.min.js') }}"></script>
-    <script src="{{ asset('global_assets/js/plugins/forms/selects/select2.min.js') }}"></script>
-        <script src="{{ asset('global_assets/js/plugins/forms/styling/uniform.min.js') }}"></script>
     
+    <!-- Theme JS files -->
+    <script src="{{ asset('vendor/datatables/datatables.min.js') }}"></script>
+    <script src="{{ asset('vendor/datatables/buttons.min.js') }}"></script>
 
-    <link rel="stylesheet" href="{{ asset('global_assets/select/css/bootstrap-select.min.css') }}">
-    <script src="{{ asset('global_assets/select/js/bootstrap-select.min.js') }}"></script>
-    <script src="{{ asset('global_assets/select/js/i18n/defaults-es_ES.js') }}"></script>
+    <script src="{{ asset('vendor/forms/select2.min.js') }}"></script>
+    <script src="{{ asset('vendor/forms/uniform.min.js') }}"></script>
+    
+    <link rel="stylesheet" href="{{ asset('vendor/select/css/bootstrap-select.min.css') }}">
+    <script src="{{ asset('vendor/select/js/bootstrap-select.min.js') }}"></script>
+    <script src="{{ asset('vendor/select/js/i18n/defaults-es_ES.js') }}"></script>
     
     {{-- jquery confirm --}}
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-confirm/3.3.2/jquery-confirm.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('vendor/jquery-confirm-v3.3.4/dist/jquery-confirm.min.css') }}">
+    <script src="{{ asset('vendor/jquery-confirm-v3.3.4/dist/jquery-confirm.min.js') }}"></script>
 
     <script src="{{ asset('assets/js/app.js') }}"></script>
-    <script src="{{ asset('global_assets/js/demo_pages/form_layouts.js') }}"></script>
+    <script src="{{ asset('vendor/forms/form_layouts.js') }}"></script>
     
     <!-- /theme JS files -->
 
@@ -67,7 +62,7 @@
     <div class="navbar navbar-expand-md navbar-dark bg-indigo navbar-static">
         <div class="navbar-brand">
             <a href="{{ url('/') }}" class="d-inline-block">
-                <img src="{{ asset('global_assets/images/logo_light.png') }}" alt="">
+                <img src="{{ asset('img/logo.png') }}" alt="">
             </a>
         </div>
 

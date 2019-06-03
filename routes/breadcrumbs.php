@@ -108,3 +108,27 @@ Breadcrumbs::for('editarAutoridad', function ($trail,$user) {
 
 
 
+
+// mis asociaciones
+
+Breadcrumbs::for('miAsociaciones', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Mis asociaciones', route('miAsociaciones'));
+});
+// mis comunidades
+Breadcrumbs::for('miComunidades', function ($trail,$aso) {
+    $trail->parent('miAsociaciones');
+    $trail->push('Mis comunidades en '.$aso->nombre, route('miComunidades',$aso->id));
+});
+
+// propiedades
+
+Breadcrumbs::for('propiedades', function ($trail,$comu) {
+    $trail->parent('miComunidades',$comu->asociacion);
+    $trail->push('Propiedades en '.$comu->nombre, route('propiedades',$comu->id));
+});
+
+Breadcrumbs::for('nuevaPropiedad', function ($trail,$comu) {
+    $trail->parent('propiedades',$comu);
+    $trail->push('Nueva propiedad en '.$comu->nombre, route('nuevaPropiedad',$comu->id));
+});

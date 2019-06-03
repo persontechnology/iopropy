@@ -18,7 +18,17 @@ class MiComunidadesDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
-         
+            ->editColumn('created_at',function($comu){
+                return $comu->parroquia->canton->nombre.', '.$comu->parroquia->canton->provincia->nombre;
+            })
+            ->editColumn('parroquia_id',function($comu){
+                return $comu->parroquia->nombre;
+            })
+            ->filterColumn('parroquia_id', function($query, $keyword) {
+                $query->whereHas('parroquia', function($query) use ($keyword) {
+                    $query->whereRaw("nombre like ?", ["%{$keyword}%"]);
+                });
+            })
             ->addColumn('action', function($micomu){
                 return view('comunidades.misComunidades.acciones',['micomu'=>$micomu]);
             });
@@ -47,7 +57,7 @@ class MiComunidadesDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->addAction(['width' => '80px'])
+                    ->addAction(['width' => '80px','printable' => false, 'exportable' => false,'title'=>'Propiedades'])
                     ->parameters($this->getBuilderParameters());
     }
 
@@ -59,8 +69,9 @@ class MiComunidadesDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            
             'nombre'=>['title'=>'Comunidad'],
+            'parroquia_id'=>['title'=>'Parroquia'],
+            'created_at'=>['title'=>'Cantón & Provincia']
         ];
     }
 

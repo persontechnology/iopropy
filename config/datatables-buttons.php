@@ -60,8 +60,7 @@ return [
         'dom'     => '<"datatable-header"fBl><"datatable-scroll-wrap"t><"datatable-footer"ip>',
         'order'   => [[0, 'desc']],
         'sPaginationType'=> 'full_numbers',
-
-
+        'autoWidth' => false,
         'lengthMenu'=> [
             [ 10, 25, 50, -1 ],
             [ '10 filas', '25 filas', '50 filas', 'Mostrar todo' ]

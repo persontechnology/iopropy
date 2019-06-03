@@ -1,14 +1,13 @@
 @extends('layouts.app',['title'=>'Autoridades'])
 
-
-@section('breadcrumbs', Breadcrumbs::render('autoridades'))
+@section('breadcrumbs', Breadcrumbs::render('nuevaPropiedad',$comu))
 
 @section('acciones')
 
   <div class="breadcrumb justify-content-center">
-    <a href="{{ route('autoridades') }}" class="breadcrumb-elements-item">
+    <a href="{{ route('propiedades',$comu->id) }}" class="breadcrumb-elements-item">
         <i class="fas fa-arrow-left"></i>
-        Atras
+        Cancelar
     </a>
 </div>
 @endsection
@@ -228,8 +227,8 @@
 
 
 <script>
-	$('#m_autoridades').addClass('active');
-   $('#tipoIdentificacion').on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
+	$('#m_miasociaciones').addClass('active');
+    $('#tipoIdentificacion').on('changed.bs.select', function (e, clickedIndex, isSelected, previousValue) {
         var tp=clickedIndex;
         if (tp==5) {
             $('#identificacion').val('0000000000');

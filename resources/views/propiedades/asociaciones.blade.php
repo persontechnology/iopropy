@@ -1,6 +1,5 @@
-@extends('layouts.app',['title'=>'Comunidades'])
-
-
+@extends('layouts.app',['title'=>'Mis asociaciones'])
+@section('breadcrumbs', Breadcrumbs::render('miAsociaciones'))
 @section('content')
 <div class="card">
   <div class="card-body">
@@ -12,6 +11,6 @@
 {!! $dataTable->scripts() !!}
 
 <script>
-	$('#m_canton').addClass('active');
+	$('#m_miasociaciones').addClass('active');
 </script>
 @endsection

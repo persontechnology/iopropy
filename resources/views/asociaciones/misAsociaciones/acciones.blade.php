@@ -1,3 +1,3 @@
 <a href="{{ route('miComunidades',$micomu->asociacion_id) }}">
-    Comunidades
+    Ingresar
 </a>

@@ -1,5 +1,5 @@
 @extends('layouts.app',['title'=>'Propiedades'])
-
+@section('breadcrumbs', Breadcrumbs::render('propiedades',$comu))
 @section('acciones')
 
   <div class="breadcrumb justify-content-center">
@@ -22,6 +22,6 @@
 {!! $dataTable->scripts() !!}
 
 <script>
-	$('#m_canton').addClass('active');
+	$('#m_miasociaciones').addClass('active');
 </script>
 @endsection

@@ -1,3 +1,3 @@
 <a href="{{ route('propiedades',$micomu->id) }}">
-    Propiedades
+    Ingresar
 </a>
