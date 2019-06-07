@@ -33,15 +33,13 @@ class RqGuardar extends FormRequest
             'linderoEsteCon'=>'required|string|max:255',
             'linderoOesteCon'=>'required|string|max:255',
             'precioEstimado'=>'required|regex:'.$rg_decimal,
-            'serviciosBasicos'=>'required|in:1,2',
-            'tieneCasa'=>'required|in:1,2',
-            'camino'=>'required|in:1,2',
+            'serviciosBasicos'=>'required|in:1,0',
+            'tieneCasa'=>'required|in:1,0',
+            'camino'=>'required|in:1,0',
             "propietariosAntiguo"    => "required|array|min:1",
             "propietariosAntiguo.*"  => "required|exists:users,id",
             "propietariosActuales"    => "required|array|min:1",
             "propietariosActuales.*"  => "required|exists:users,id",
-
-
         ];
     }
 }

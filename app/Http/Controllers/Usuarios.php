@@ -68,6 +68,10 @@ class Usuarios extends Controller
             if(Auth::user()->hasRole('Administrador')){
                 $user->assignRole('Asociacion');
             }
+        }else{
+            if(Auth::user()->hasRole('Administrador')){
+                $user->removeRole('Asociacion');
+            }
         }
         
         $user->nombres=$request->nombres;

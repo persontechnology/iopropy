@@ -7,6 +7,9 @@ use iopro\DataTables\AsociacionDataTable;
 use iopro\Http\Requests\RqIngresarAsociacion;
 USE iopro\Http\Requests\RqActualizarAsociacion;
 use iopro\Models\Asociacion;
+use iopro\DataTables\PropiedadEnComunidadDataTable;
+use iopro\Models\Comunidad;
+
 class Asociaciones extends Controller
 {
     public function __construct()
@@ -63,5 +66,12 @@ class Asociaciones extends Controller
             $request->session()->flash('info','Asociación no eliminada');
         }
         return redirect()->route('asociaciones');   
+    }
+
+    public function propiedades(PropiedadEnComunidadDataTable $dataTable,$idComunidad)
+    {   
+        $comu=Comunidad::findOrFail($idComunidad);
+        return $dataTable->with('idComu',$comu->id)->render('asociaciones.propiedades.index',['comu'=>$comu]);        
+        return abort(403);   
     }
 }

@@ -1,10 +1,11 @@
 
 @if($aso->comunidades->count()>0)
-<div class="list-group">
   @foreach($aso->comunidades as $com)
-  <a href="#" class="">{{ $com->nombre }}</a>
+  <li>
+      <a href="{{ route('propiedadesEnAsociaciones',$com->id) }}" class="">{{ $com->nombre }}</a>
+  </li>
+  
   @endforeach
-</div>
 @else
 <p>Sin comunidades</p>
 @endif

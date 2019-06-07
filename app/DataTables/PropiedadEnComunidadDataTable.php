@@ -18,7 +18,30 @@ class PropiedadEnComunidadDataTable extends DataTable
     public function dataTable($query)
     {
         return datatables($query)
-            ->addColumn('action', 'propiedadencomunidad.action');
+            ->editColumn('tieneCasa',function($pro){
+                if($pro->tieneca){
+                    return 'Si';
+                }else{
+                    return 'No';
+                }
+            })
+            ->editColumn('camino',function($pro){
+                if($pro->camino){
+                    return 'Si';
+                }else{
+                    return 'No';
+                }
+            })
+            ->editColumn('serviciosBasicos',function($pro){
+                if($pro->serviciosBasicos){
+                    return 'Si';
+                }else{
+                    return 'No';
+                }
+            })
+            ->addColumn('action', function($pro){
+                return view('propiedades.acciones',['pro'=>$pro])->render();
+            });
     }
 
     /**
@@ -29,7 +52,7 @@ class PropiedadEnComunidadDataTable extends DataTable
      */
     public function query(Propiedad $model)
     {
-        return $model->where('comunidad_id',$this->idComu)->select('*');
+        return $model->where('comunidad_id',$this->idComu)->select('*')->orderBy('created_at','desc');
     }
 
     /**
@@ -54,10 +77,12 @@ class PropiedadEnComunidadDataTable extends DataTable
     protected function getColumns()
     {
         return [
-            'id',
+            'codigo',
             'medidaTotal',
-            'created_at',
-            'updated_at'
+            'precioEstimado',
+            'tieneCasa',
+            'camino',
+            'serviciosBasicos'=>['title'=>' Servicios Básicos']
         ];
     }
 

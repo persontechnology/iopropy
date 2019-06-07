@@ -127,11 +127,38 @@ Breadcrumbs::for('propiedades', function ($trail,$comu) {
     $trail->parent('miComunidades',$comu->asociacion);
     $trail->push('Propiedades en '.$comu->nombre, route('propiedades',$comu->id));
 });
-
 Breadcrumbs::for('nuevaPropiedad', function ($trail,$comu) {
     $trail->parent('propiedades',$comu);
     $trail->push('Nueva propiedad en '.$comu->nombre, route('nuevaPropiedad',$comu->id));
 });
+Breadcrumbs::for('editarPropiedad', function ($trail,$pro) {
+    $trail->parent('propiedades',$pro->comunidad);
+    $trail->push('Editar propiedad '.$pro->codigo, route('editarPropiedad',$pro->id));
+});
+Breadcrumbs::for('informacionPropiedad', function ($trail,$pro) {
+    $trail->parent('propiedades',$pro->comunidad);
+    $trail->push('Información propiedad '.$pro->codigo, route('informacionPropiedad',$pro->id));
+});
+
+// propiedeades en federacion
+
+Breadcrumbs::for('propiedadesFed', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Propiedades', route('propiedadesFed'));
+});
+Breadcrumbs::for('nuevaPropiedadFed', function ($trail) {
+    $trail->parent('propiedadesFed');
+    $trail->push('Nueva propiedad', route('nuevaPropiedadFed'));
+});
+Breadcrumbs::for('editarPropiedadFed', function ($trail,$pro) {
+    $trail->parent('propiedadesFed');
+    $trail->push('Nueva propiedad', route('editarPropiedadFed',$pro->id));
+});
+Breadcrumbs::for('informacionPropiedadFed', function ($trail,$pro) {
+    $trail->parent('propiedadesFed');
+    $trail->push('Actualizar propiedad', route('informacionPropiedadFed',$pro->id));
+});
+
 
 
 // usuarios
@@ -147,4 +174,11 @@ Breadcrumbs::for('nuevoUsuario', function ($trail) {
 Breadcrumbs::for('editarUsuario', function ($trail,$user) {
     $trail->parent('usuarios');
     $trail->push('Editar usuario', route('editarUsuario',$user->id));
+});
+
+
+// ventas
+Breadcrumbs::for('ventas', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Ventas', route('ventas'));
 });

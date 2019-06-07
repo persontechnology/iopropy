@@ -1,3 +1,3 @@
-<a href="{{ route('comunidades',$id) }}" class="btn alpha-primary text-primary-800 btn-icon btn-sm float-right">
-	<i class="icon-link"></i>
+<a href="{{ route('comunidades',$id) }}" class="btn btn-info btn-sm" data-toggle="tooltip" data-placement="right" title="Ingresar">
+		<i class="icon-link"></i>
 </a>

@@ -62,13 +62,25 @@
             <ul class="nav nav-sidebar" data-nav-type="accordion">
 
                 <li class="nav-item">
-                    <a href="{{ route('home') }}" class="nav-link" id="m_inicio">
-                        <i class="fas fa-home"></i> <span>Inicio</span>
+                    <a href="{{ route('home') }}" class="nav-link" id="m_home">
+                        <i class="fas fa-globe-europe"></i> <span>Inicio</span>
                     </a>
                 </li>
 
+                
                 @role('Administrador')
+                    
+                    <li class="nav-item">
+                        <a href="{{ route('ventas') }}" class="nav-link" id="m_ventas">
+                                <i class="fas fa-shopping-cart"></i>Ventas</span>
+                        </a>
+                    </li>
 
+                    <li class="nav-item">
+                        <a href="{{ route('propiedadesFed') }}" class="nav-link" id="m_propiedades">
+                            <i class="fas fa-users-cog"></i> <span>Propiedades</span>
+                        </a>
+                    </li>
 
                     <li class="nav-item">
                         <a href="{{ route('autoridades') }}" class="nav-link" id="m_autoridades">
@@ -97,22 +109,22 @@
 
 
                 @endrole
-
+                
+                @role('Administrador|Asociacion')
                 <li class="nav-item">
                     <a href="{{ route('usuarios') }}" class="nav-link" id="m_usuarios">
                         <i class="fas fa-users"></i><span>Usuarios</span>
                     </a>
                 </li>
 
-                @if(Auth::user()->roles('Asociacion'))
                 
                 <li class="nav-item">
                     <a href="{{ route('miAsociaciones') }}" class="nav-link" id="m_miasociaciones">
                         <i class="fas fa-map-marker-alt"></i><span>Mis Asociaciones</span>
                     </a>
                 </li>
+                @endrole
 
-                @endif
               
 
             </ul>

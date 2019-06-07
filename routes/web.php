@@ -44,6 +44,9 @@ Route::group(['middleware' => ['role:Administrador']], function () {
     Route::get('/asociaciones-editar/{id}','Asociaciones@editar')->name('editarAsociacion');
     Route::post('/asociaciones-actualizar','Asociaciones@actualizar')->name('actualizarAsociacion');
     Route::get('/asociaciones-eliminar/{id}','Asociaciones@eliminar')->name('eliminarAsociacion');
+    // comunidades en asociaciones
+    Route::get('/propiedades-asociacion/{idComu}','Asociaciones@propiedades')->name('propiedadesEnAsociaciones');
+    
     
     
     /*autoridades*/
@@ -58,12 +61,31 @@ Route::group(['middleware' => ['role:Administrador']], function () {
     Route::post('/autoridades-actualizar','Autoridades@actualizar')->name('actualizarAutoridad');
     Route::get('/autoridades-eliminar-info/{idUser}','Autoridades@eliminarInfo')->name('eliminarAutoridadInfo');
 
+    //propiedades
+    Route::get('/propiedades-fed','PropiedadesFed@index')->name('propiedadesFed');
+    Route::get('/propiedades-fed-nuevo','PropiedadesFed@nuevo')->name('nuevaPropiedadFed');
+    Route::post('/propiedades-fed-guardar','PropiedadesFed@guardar')->name('guardarPropiedadFed');
+    Route::get('/propiedades-fed-editar/{idPro}','PropiedadesFed@editar')->name('editarPropiedadFed');
+    Route::post('/propiedades-fed-actualizar','PropiedadesFed@actualizar')->name('actualizarPropiedadFed');
+    Route::get('/propiedades-fed-informacion/{id}','PropiedadesFed@informacion')->name('informacionPropiedadFed');
+    Route::get('/propiedades-fed-pdf/{id}','PropiedadesFed@verPdf')->name('verPdfPropiedadFed');
+    Route::get('/propiedades-fed-imprimir/{id}','PropiedadesFed@imprimir')->name('imprimirPropiedadFed');
+
+    // ventas
+    Route::get('/ventas','Ventas@index')->name('ventas');
+    Route::get('/ventas-nuevo','Ventas@nuevo')->name('nuevoVenta');
+    Route::get('/ventas-info/{idVenta}','Ventas@informacion')->name('infoVenta');
+    Route::post('/ventas-guardar','Ventas@guardar')->name('guardarVenta');
+    Route::get('/ventas-aprobar/{idVenta}','Ventas@aprobar')->name('aprobarVenta');
+    Route::get('/ventas-anular/{idVenta}','Ventas@anular')->name('anularVenta');
+    
+    
     
 });
 
 
 
-Route::group(['middleware' => ['role:Asociacion']], function () {
+Route::group(['middleware' => ['role:Asociacion|Administrador']], function () {
     
     
 
@@ -77,7 +99,15 @@ Route::group(['middleware' => ['role:Asociacion']], function () {
     Route::get('/propiedades/{idComunidad}','Propiedades@index')->name('propiedades');
     Route::get('/propiedades-nuevo/{idComunidad}','Propiedades@nuevo')->name('nuevaPropiedad');
     Route::post('/propiedades-guardar','Propiedades@guardar')->name('guardarPropiedad');
-
+    Route::get('/propiedades-editar/{idPro}','Propiedades@editar')->name('editarPropiedad');
+    Route::post('/propiedades-actualizar','Propiedades@actualizar')->name('actualizarPropiedad');
+    Route::get('/propiedades-informacion/{id}','Propiedades@informacion')->name('informacionPropiedad');
+    Route::get('/propiedades-pdf/{id}','Propiedades@verPdf')->name('verPdfPropiedad');
+    Route::get('/propiedades-imprimir/{id}','Propiedades@imprimir')->name('imprimirPropiedad');
+    
+    
+    
+    
 
     
 });

@@ -1,4 +1,4 @@
-@extends('layouts.app',['title'=>'Autoridades'])
+@extends('layouts.app',['title'=>'Nuevo propiedad'])
 
 @section('breadcrumbs', Breadcrumbs::render('nuevaPropiedad',$comu))
 
@@ -26,7 +26,7 @@
                   <legend class="font-weight-semibold"><i class="icon-reading mr-2"></i> Complete la información de la propiedad</legend>
                 
                   <div class="form-group row">
-                    <label class="col-lg-3 col-form-label" for="codigo">Código<span class="text-danger">*</span></label>
+                    <label class="col-lg-3 col-form-label" for="codigo">Código:<span class="text-danger">*</span></label>
                     <div class="col-lg-9">
                         <input type="text" class="form-control{{ $errors->has('codigo') ? ' is-invalid' : '' }}" name="codigo" id="codigo" placeholder="Ingrese.." required="" value="{{ old('codigo',$comu->codigo.'-'.str_random(15)) }}">
                         @if ($errors->has('codigo'))
@@ -38,7 +38,7 @@
                 </div>
 
                   <div class="form-group row">
-                      <label class="col-lg-3 col-form-label" for="medidaTotal">Medidad total<span class="text-danger">*</span></label>
+                      <label class="col-lg-3 col-form-label" for="medidaTotal">Medida total:<span class="text-danger">*</span></label>
                       <div class="col-lg-9">
                           <input type="text" class="form-control{{ $errors->has('medidaTotal') ? ' is-invalid' : '' }}" name="medidaTotal" id="medidaTotal" placeholder="Ingrese.." required="" value="{{ old('medidaTotal') }}">
                           @if ($errors->has('medidaTotal'))
@@ -51,7 +51,7 @@
 
                   {{--  lindero norte  --}}
                   <div class="form-group row">
-                    <label class="col-lg-3 col-form-label" for="linderoNorteCon">linderoNorteCon<span class="text-danger">*</span></label>
+                    <label class="col-lg-3 col-form-label" for="linderoNorteCon">Lindero norte con:<span class="text-danger">*</span></label>
                     <div class="col-lg-9">
                         <input type="text" class="form-control{{ $errors->has('linderoNorteCon') ? ' is-invalid' : '' }}" name="linderoNorteCon" id="linderoNorteCon" placeholder="Ingrese.." required="" value="{{ old('linderoNorteCon') }}">
                         @if ($errors->has('linderoNorteCon'))
@@ -64,7 +64,7 @@
 
                 {{--  lindero sur  --}}
                 <div class="form-group row">
-                    <label class="col-lg-3 col-form-label" for="linderoSurCon">linderoSurCon<span class="text-danger">*</span></label>
+                    <label class="col-lg-3 col-form-label" for="linderoSurCon">Lindero sur con:<span class="text-danger">*</span></label>
                     <div class="col-lg-9">
                         <input type="text" class="form-control{{ $errors->has('linderoSurCon') ? ' is-invalid' : '' }}" name="linderoSurCon" id="linderoSurCon" placeholder="Ingrese.." required="" value="{{ old('linderoSurCon') }}">
                         @if ($errors->has('linderoSurCon'))
@@ -77,7 +77,7 @@
 
                 {{--  lindero este  --}}
                 <div class="form-group row">
-                    <label class="col-lg-3 col-form-label" for="linderoEsteCon">linderoEsteCon<span class="text-danger">*</span></label>
+                    <label class="col-lg-3 col-form-label" for="linderoEsteCon">Lindero este con:<span class="text-danger">*</span></label>
                     <div class="col-lg-9">
                         <input type="text" class="form-control{{ $errors->has('linderoEsteCon') ? ' is-invalid' : '' }}" name="linderoEsteCon" id="linderoEsteCon" placeholder="Ingrese.." required="" value="{{ old('linderoEsteCon') }}">
                         @if ($errors->has('linderoEsteCon'))
@@ -90,7 +90,7 @@
 
                 {{--  lindero oeste  --}}
                 <div class="form-group row">
-                    <label class="col-lg-3 col-form-label" for="linderoOesteCon">linderoOesteCon<span class="text-danger">*</span></label>
+                    <label class="col-lg-3 col-form-label" for="linderoOesteCon">Lindero oeste con:<span class="text-danger">*</span></label>
                     <div class="col-lg-9">
                         <input type="text" class="form-control{{ $errors->has('linderoOesteCon') ? ' is-invalid' : '' }}" name="linderoOesteCon" id="linderoOesteCon" placeholder="Ingrese.." required="" value="{{ old('linderoOesteCon') }}">
                         @if ($errors->has('linderoOesteCon'))
@@ -116,7 +116,7 @@
                 {{--  precio estimado  --}}
                 
                 <div class="form-group row">
-                    <label class="col-lg-3 col-form-label" for="precioEstimado">precioEstimado<span class="text-danger">*</span></label>
+                    <label class="col-lg-3 col-form-label" for="precioEstimado">Precio estimado:<span class="text-danger">*</span></label>
                     <div class="col-lg-9">
                         <input type="text" class="form-control{{ $errors->has('precioEstimado') ? ' is-invalid' : '' }}" name="precioEstimado" id="precioEstimado" placeholder="Ingrese.." required="" value="{{ old('precioEstimado') }}">
                         @if ($errors->has('precioEstimado'))
@@ -129,13 +129,13 @@
 
                 {{--  servivicios basico  --}}
                 <div class="form-group row">
-                    <label class="col-lg-3 col-form-label" >serviciosBasicos:<span class="text-danger">*</span></label>
+                    <label class="col-lg-3 col-form-label" >Servicios básicos:<span class="text-danger">*</span></label>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input {{ $errors->has('serviciosBasicos') ? ' is-invalid' : '' }}" value="1" id="serviciosBasicosSi" name="serviciosBasicos"  required {{ old('serviciosBasicos')=='Si'?'checked':'checked' }}>
+                        <input type="radio" class="custom-control-input {{ $errors->has('serviciosBasicos') ? ' is-invalid' : '' }}" value="1" id="serviciosBasicosSi" name="serviciosBasicos"  required {{ old('serviciosBasicos')=='1'?'checked':'checked' }}>
                         <label class="custom-control-label" for="serviciosBasicosSi">Si</label>
                     </div>
                     <div class="custom-control custom-radio mb-3">
-                        <input type="radio" class="custom-control-input{{ $errors->has('serviciosBasicos') ? ' is-invalid' : '' }}" value="0" id="serviciosBasicosNo" name="serviciosBasicos" required {{ old('serviciosBasicos')=='No'?'checked':'' }}>
+                        <input type="radio" class="custom-control-input{{ $errors->has('serviciosBasicos') ? ' is-invalid' : '' }}" value="0" id="serviciosBasicosNo" name="serviciosBasicos" required {{ old('serviciosBasicos')=='0'?'checked':'' }}>
                         <label class="custom-control-label" for="serviciosBasicosNo">No</label>
                         
                         @if ($errors->has('serviciosBasicos'))
@@ -149,13 +149,13 @@
                 {{--  tiene cas  --}}
 
                 <div class="form-group row">
-                    <label class="col-lg-3 col-form-label" >tieneCasa:<span class="text-danger">*</span></label>
+                    <label class="col-lg-3 col-form-label" >Casa:<span class="text-danger">*</span></label>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input {{ $errors->has('tieneCasa') ? ' is-invalid' : '' }}" value="1" id="tieneCasaSi" name="tieneCasa"  required {{ old('tieneCasa')=='Si'?'checked':'checked' }}>
+                        <input type="radio" class="custom-control-input {{ $errors->has('tieneCasa') ? ' is-invalid' : '' }}" value="1" id="tieneCasaSi" name="tieneCasa"  required {{ old('tieneCasa')=='1'?'checked':'checked' }}>
                         <label class="custom-control-label" for="tieneCasaSi">Si</label>
                     </div>
                     <div class="custom-control custom-radio mb-3">
-                        <input type="radio" class="custom-control-input{{ $errors->has('tieneCasa') ? ' is-invalid' : '' }}" value="0" id="tieneCasaNo" name="tieneCasa" required {{ old('tieneCasa')=='No'?'checked':'' }}>
+                        <input type="radio" class="custom-control-input{{ $errors->has('tieneCasa') ? ' is-invalid' : '' }}" value="0" id="tieneCasaNo" name="tieneCasa" required {{ old('tieneCasa')=='0'?'checked':'' }}>
                         <label class="custom-control-label" for="tieneCasaNo">No</label>
                         
                         @if ($errors->has('tieneCasa'))
@@ -169,11 +169,11 @@
                 <div class="form-group row">
                     <label class="col-lg-3 col-form-label" >Tiene camino:<span class="text-danger">*</span></label>
                     <div class="custom-control custom-radio">
-                        <input type="radio" class="custom-control-input {{ $errors->has('camino') ? ' is-invalid' : '' }}" value="1" id="CaminoSi" name="camino"  required {{ old('camino')=='Si'?'checked':'checked' }}>
+                        <input type="radio" class="custom-control-input {{ $errors->has('camino') ? ' is-invalid' : '' }}" value="1" id="CaminoSi" name="camino"  required {{ old('camino')=='1'?'checked':'checked' }}>
                         <label class="custom-control-label" for="CaminoSi">Si</label>
                     </div>
                     <div class="custom-control custom-radio mb-3">
-                        <input type="radio" class="custom-control-input{{ $errors->has('camino') ? ' is-invalid' : '' }}" value="0" id="CaminoNo" name="camino" required {{ old('camino')=='No'?'checked':'' }}>
+                        <input type="radio" class="custom-control-input{{ $errors->has('camino') ? ' is-invalid' : '' }}" value="0" id="CaminoNo" name="camino" required {{ old('camino')=='0'?'checked':'' }}>
                         <label class="custom-control-label" for="CaminoNo">No</label>
                         
                         @if ($errors->has('camino'))
@@ -219,6 +219,7 @@
                 </div> 
             @endif
 
+                
 
             </fieldset>
             

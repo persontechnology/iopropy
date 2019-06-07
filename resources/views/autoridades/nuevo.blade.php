@@ -229,6 +229,11 @@
                           @endif
                       </div>
                   </div>
+
+                  <div class="form-check">
+                    <input type="checkbox" class="form-check-input" id="rolfedereacion" name="rolfedereacion">
+                    <label class="form-check-label" for="rolfedereacion">Asignar rol de federación</label>
+                  </div>
         
               </fieldset>
           </div>

@@ -37,7 +37,7 @@ class ComunidadListaDataTable extends DataTable
 
 
             ->addColumn('action', function($c){
-                return 'opciones';
+                return view('comunidades.acciones', ['id'=>$c->id])->render();
             });
     }
 

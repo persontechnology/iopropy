@@ -44,6 +44,10 @@ class Autoridades extends Controller
         $user->celular=$request->celular;
         $user->detalle=$request->detalle;
         $user->estadoCivil=$request->estadoCivil;
+        if($request->rolfedereacion){
+            $user->assignRole('Administrador');    
+        }
+      
         $user->assignRole('Asociacion');
         $user->save();
 
@@ -149,8 +153,18 @@ class Autoridades extends Controller
         $user->celular=$request->celular;
         $user->detalle=$request->detalle;
         $user->estadoCivil=$request->estadoCivil;
+        
+        if($request->rolfedereacion){
+            $user->assignRole('Administrador');    
+        }else{
+            $user->removeRole('Administrador');
+        }
+        if($request->estado){
+            $user->estado=true;
+        }else{
+            $user->estado=false;
+        }
         $user->save();
-
         $request->session()->flash('success','Información de Autoridad actualizado');
         return redirect()->route('autoridades');
     }

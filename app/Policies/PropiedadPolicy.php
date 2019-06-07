@@ -10,14 +10,7 @@ class PropiedadPolicy
 {
     use HandlesAuthorization;
 
-    /**
-     * Determine whether the user can view the propiedad.
-     *
-     * @param  \iopro\User  $user
-     * @param  \iopro\Models\Propiedad  $propiedad
-     * @return mixed
-     */
-    public function view(User $user, Propiedad $propiedad)
+    public function editar(User $user, Propiedad $propiedad)
     {
         
     }

@@ -147,6 +147,9 @@
     <!-- /page content -->
 
     <script>
+        $('table').on('draw.dt', function() {
+            $('[data-toggle="tooltip"]').tooltip();
+        })
        function eliminar(argument) {
            var url=$(argument).data('url');
            $.confirm({
@@ -172,6 +175,34 @@
                 }
             });
        }
+
+
+       function confirmar(argument) {
+        var url=$(argument).data('url');
+        $.confirm({
+             theme: 'dark',
+             title: '¿Estás seguro?',
+             content: 'De confirmar esta acción!',
+             buttons: {
+                 confirm: {
+                     text: 'Confirmar <small>[enter]</small>',
+                     btnClass: 'btn-default',
+                     keys: ['enter'],
+                     action: function(){
+                         window.location.href = url;
+                     }
+                 },
+                 cancel:  {
+                     text: 'Cancelar <small>[esc]</small>',
+                     btnClass: 'btn-danger',
+                     keys: ['esc'],
+                     action: function(){
+                     }
+                 }
+             }
+         });
+    }
+
     </script>
 
 </body>

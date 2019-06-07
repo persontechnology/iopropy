@@ -1,5 +1,9 @@
- <div class="btn-group btn-group-justified">
-	<a href="{{ route('editarComunidad',$id) }}" class="btn bg-indigo-800 btn-sm">Editar</a>
-	<button type="button" class="btn bg-violet-800 btn-sm" data-url="{{ route('eliminarComunidad',$id) }}" onclick="eliminar(this);">Eliminar</button>
+<div class="btn-group btn-group-sm" role="group" aria-label="...">
+	<a href="{{ route('editarComunidad',$id) }}" class="btn bg-info" data-toggle="tooltip" data-placement="right" title="Editar">
+		<i class="fas fa-edit"></i>
+	</a>
+	<button type="button" class="btn btn-danger" data-url="{{ route('eliminarComunidad',$id) }}" onclick="eliminar(this);" data-toggle="tooltip" data-placement="top" title="Eliminar">
+		<i class="fas fa-trash-alt"></i>
+	</button>
 	
 </div>

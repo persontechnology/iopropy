@@ -16,8 +16,7 @@ class CreatePropietarioTable extends Migration
         Schema::create('propietario', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->timestamps();
-            $table->enum('tipo',['Antiguo','Actual']);
-
+            
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
 

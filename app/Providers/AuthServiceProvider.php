@@ -8,6 +8,8 @@ use iopro\User;
 use iopro\Policies\UserPolicy;
 use iopro\Models\Comunidad;
 use iopro\Policies\ComunidadPolicy;
+use iopro\Models\Propiedad;
+use iopro\Policies\PropiedadPolicy;
 class AuthServiceProvider extends ServiceProvider
 {
     /**
@@ -18,6 +20,7 @@ class AuthServiceProvider extends ServiceProvider
     protected $policies = [
         User::class => UserPolicy::class,
         Comunidad::class=>ComunidadPolicy::class,
+        Propiedad::class=>PropiedadPolicy::class
     ];
 
     /**

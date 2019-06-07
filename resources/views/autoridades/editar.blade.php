@@ -229,7 +229,19 @@
                               </span>
                           @endif
                     </div>
-        
+
+                  </div>
+                  <div class="form-check">
+                        <input type="checkbox" class="form-check-input" id="rolfedereacion" name="rolfedereacion" {{ $user->hasRole('Administrador')?'checked':'' }}>
+                        <label class="form-check-label" for="rolfedereacion">Asignar rol de federación</label>
+                    </div>
+                    
+                    <div class="form-check">
+                        
+                        <input type="checkbox" class="form-check-input" id="estado" name="estado" {{ $user->estado==true?'checked':'' }}>
+                        <label class="form-check-label" for="estado">Acceso al sistema</label>
+                    </div>
+
               </fieldset>
           </div>
       </div>
