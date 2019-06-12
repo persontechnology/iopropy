@@ -18,6 +18,9 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/mi-perfil', 'HomeController@miperfil')->name('miPerfil');
+Route::post('/mi-perfil-actualizar', 'HomeController@miperfilActualizar')->name('actualizarPerfil');
+
 Route::group(['middleware' => ['role:Administrador']], function () {
 
     Route::get('/cantones', 'Cantones@index')->name('cantones');
@@ -78,6 +81,15 @@ Route::group(['middleware' => ['role:Administrador']], function () {
     Route::post('/ventas-guardar','Ventas@guardar')->name('guardarVenta');
     Route::get('/ventas-aprobar/{idVenta}','Ventas@aprobar')->name('aprobarVenta');
     Route::get('/ventas-anular/{idVenta}','Ventas@anular')->name('anularVenta');
+    Route::get('/ventas-eliminar/{idVenta}','Ventas@eliminar')->name('eliminarVenta');
+    Route::get('/ventas-imprimir/{idVenta}','Ventas@imprimir')->name('imprimirVenta');
+    Route::get('/ventas-pdf/{idVenta}','Ventas@pdf')->name('pdfVenta');
+    Route::get('/ventas-contrato/{idVenta}','Ventas@contrato')->name('contratoVenta');
+    Route::post('/ventas-actualizar','Ventas@actualizarContrato')->name('actualizarContrato');
+    Route::get('/ventas-contrato-pdf/{idVenta}','Ventas@contratoPdf')->name('contratoPdf');
+
+    // ventas en propiedad
+    Route::get('/ventas-en-propiedad/{idPro}','Ventas@ventasEnPropiedad')->name('ventasEnPropiedad');
     
     
     
@@ -118,3 +130,5 @@ Route::post('/usuarios-guardar','Usuarios@guardar')->name('guardarUsuario');
 Route::get('/usuarios-editar/{idUser}','Usuarios@editar')->name('editarUsuario');
 Route::post('/usuarios-actualizar','Usuarios@actualizar')->name('actualizarUsuario');
 Route::get('/usuarios-eliminar/{idUser}','Usuarios@eliminar')->name('eliminarUsuario');
+// propiedades
+Route::get('/mis-propiedades/{idUser}','Usuarios@misPropiedades')->name('misPropiedades');

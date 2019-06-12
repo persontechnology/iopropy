@@ -7,6 +7,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
 use iopro\Models\Asociacion;
+use iopro\Models\Propiedad;
+
 class User extends Authenticatable
 {
     use Notifiable;
@@ -53,5 +55,10 @@ class User extends Authenticatable
             ->as('aso')
             ->withPivot('id')
             ->wherePivot('estado',true);
+    }
+
+    public function propiedadesActuales()
+    {
+        return $this->belongsToMany(Propiedad::class, 'propietarioActual', 'user_id', 'propiedad_id');
     }
 }

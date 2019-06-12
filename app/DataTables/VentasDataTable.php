@@ -17,7 +17,7 @@ class VentasDataTable extends DataTable
     {
         return datatables($query)
             ->editColumn('propiedad_id',function($ve){
-                return $ve->propiedad->codigo;
+                return '<a href="'.route('informacionPropiedadFed',$ve->propiedad->id).'">'.$ve->propiedad->codigo.'</a>';
             })
             ->editColumn('created_at',function($ve){
                 return $ve->created_at.' '.$ve->created_at->diffForHumans();
@@ -29,7 +29,7 @@ class VentasDataTable extends DataTable
             ->addColumn('action', function($ve){
                 return view('ventas.acciones',['venta'=>$ve])->render();
             })
-            ->rawColumns(['estado','action']);
+            ->rawColumns(['propiedad_id','estado','action']);
     }
 
     /**

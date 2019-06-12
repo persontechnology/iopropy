@@ -9,7 +9,7 @@
 
     <div class="navbar-collapse collapse" id="navbar-footer">
         <span class="navbar-text">
-            &copy; 2015 - 2018. <a href="#">Limitless Web App Kit</a> by <a href="http://themeforest.net/user/Kopyov" target="_blank">Eugene Kopyov</a>
+            &copy; {{ date('Y') }}. <a href="{{ url('/') }}">Ficsh</a> by <a href="https://soysoftware.com/" target="_blank">Soysoftware</a>
         </span>
 
         <ul class="navbar-nav ml-lg-auto">

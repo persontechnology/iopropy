@@ -182,3 +182,12 @@ Breadcrumbs::for('ventas', function ($trail) {
     $trail->parent('home');
     $trail->push('Ventas', route('ventas'));
 });
+Breadcrumbs::for('nuevoVenta', function ($trail) {
+    $trail->parent('ventas');
+    $trail->push('Nueva venta', route('nuevoVenta'));
+});
+Breadcrumbs::for('infoVenta', function ($trail,$venta) {
+    $trail->parent('ventas');
+    $trail->push('Venta '.$venta->numero, route('infoVenta',$venta->id));
+});
+

@@ -1,16 +1,16 @@
 @extends('layouts.app',['title'=>'Nuevo venta'])
 
-{{--  @section('breadcrumbs', Breadcrumbs::render('nuevaPropiedad',$comu))
+ @section('breadcrumbs', Breadcrumbs::render('nuevoVenta'))
 
 @section('acciones')
 
   <div class="breadcrumb justify-content-center">
-    <a href="{{ route('propiedades',$comu->id) }}" class="breadcrumb-elements-item">
+    <a href="{{ route('ventas') }}" class="breadcrumb-elements-item">
         <i class="fas fa-arrow-left"></i>
         Cancelar
     </a>
 </div>
-@endsection  --}}
+@endsection
 
 
 @section('content')

@@ -10,6 +10,8 @@ use Illuminate\Support\Facades\Hash;
 use iopro\Http\Requests\Usuarios\RqEditar;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use iopro\DataTables\MisPropiedadesDataTable;
+
 class Usuarios extends Controller
 {
     public function __construct()
@@ -105,5 +107,10 @@ class Usuarios extends Controller
         return redirect()->route('usuarios');
     }
 
+    public function misPropiedades(MisPropiedadesDataTable $dataTable ,$idUser)
+    {
+        $user=User::findOrFail($idUser);
+        return $dataTable->with('idUser',$user->id)->render('usuarios.propiedades.index',['user'=>$user]);
+    }
 
 }

@@ -24,6 +24,11 @@ class CreateVentaTable extends Migration
             $table->foreign('propiedad_id')->references('id')->on('propiedad');
             $table->bigInteger('usuarioCreado');
             $table->bigInteger('usuarioEditado')->nullable();
+            $table->text('contrato')->nullable();
+            $table->string('norte')->nullable();
+            $table->string('sur')->nullable();
+            $table->string('este')->nullable();
+            $table->string('oeste')->nullable();
             
         });
     }

@@ -12,6 +12,8 @@ use iopro\Models\Venta;
 use iopro\Models\ItemActual;
 use iopro\Models\Propiedad;
 use Illuminate\Support\Facades\Auth;
+use PDF;
+use iopro\DataTables\VentasEnPropiedadDataTable;
 
 class Ventas extends Controller
 {
@@ -44,7 +46,7 @@ class Ventas extends Controller
             
             $pro=Propiedad::findOrFail($request->propiedad);
             
-            $estado=true;
+            
             $venta=new Venta;
             $venta->numero=$request->numeroVenta;
             $venta->precio=$request->precioEstimado;
@@ -52,14 +54,16 @@ class Ventas extends Controller
             $venta->estado='Ingresado';
             $venta->propiedad_id=$pro->id;
             $venta->usuarioCreado=Auth::id();
-            if(count($pro->ventas)>0){
-                $estado=false;
-            }
+            $venta->norte=$pro->linderoNorteCon;
+            $venta->sur=$pro->linderoSurCon;
+            $venta->este=$pro->linderoEsteCon;
+            $venta->oeste=$pro->linderoOesteCon;
+          
             
             $venta->save();
-            if($estado){
-                $venta->propietariosIniciales()->sync($pro->propietariosAntiguos->pluck('id'));
-            }
+            
+            $venta->propietariosIniciales()->sync($pro->propietariosAntiguos->pluck('id'));
+            
 
             $venta->propietariosAntiguos()->sync($pro->propietariosActuales->pluck('id'));
             $venta->propietariosActuales()->sync($request->propietariosNuevos);
@@ -68,7 +72,7 @@ class Ventas extends Controller
             $request->session()->flash('success','Venta ingresado exitosamente');
         } catch (\Exception $th) {
             DB::rollBack();
-            $request->session()->flash('info','Venta no ingresada vuelva intentar.!'.$th->getMessage());
+            $request->session()->flash('info','Venta no ingresada vuelva intentar.!');
             return redirect()->route('nuevoVenta')->withInput();
         }
         return redirect()->route('ventas');
@@ -113,4 +117,89 @@ class Ventas extends Controller
         return redirect()->route('ventas');
     }
 
+    public function eliminar(Request $request,$idVenta)
+    {
+        try {
+            DB::beginTransaction();
+            
+            
+            $venta=Venta::findOrFail($idVenta);
+            
+            if($venta->estado=='Anulado'){
+                $venta->propietariosIniciales()->detach();
+                $venta->propietariosAntiguos()->detach();
+                $venta->propietariosActuales()->detach();
+            }
+            $venta->delete();
+
+            DB::commit();
+            $request->session()->flash('success','Venta eliminado exitosamente');
+        } catch (\Exception $th) {
+            DB::rollBack();
+            $request->session()->flash('info','Venta no eliminada vuelva intentar.!');
+        }
+        return redirect()->route('ventas');
+    }
+
+    public function imprimir($idVenta)
+    {
+        $venta=Venta::findOrFail($idVenta);
+        return view('ventas.imprimir',['venta'=>$venta]);
+    }
+
+    public function pdf($idVenta)
+    {
+        $venta=Venta::findOrFail($idVenta);
+        $pdf = PDF::loadView('ventas.imprimir', ['venta'=>$venta]);
+        return $pdf->inline('Venta '.$venta->numero.'.pdf');
+    }
+
+    public function contrato(Request $request,$idVenta)
+    {
+        $venta=Venta::findOrFail($idVenta);
+        if($venta->estado=='Vendido'){
+            return view('ventas.contrato',['venta'=>$venta]);
+        }else{
+            $request->session()->flash('info','Debe aprobar la venta para acceder al documento de contrato de venta');
+            return redirect()->route('ventas');
+        }
+    }
+
+
+    public function actualizarContrato(Request $request)
+    {
+        $venta=Venta::findOrFail($request->id);
+        if($venta->estado=='Vendido'){
+            $venta->contrato=$request->contrato;
+            $venta->save();
+            $request->session()->flash('success','Contrato actualizado exitosamente');
+        }else{
+            $request->session()->flash('info','Debe aprobar la venta para acceder al documento de contrato de venta');
+        }
+        return redirect()->route('contratoVenta',$venta->id);
+    } 
+
+
+    public function contratoPdf(Request $request,$idVenta)
+    {
+        $venta=Venta::findOrFail($idVenta);
+        if($venta->contrato){
+            if($venta->estado=='Vendido'){
+                $pdf = PDF::loadView('ventas.contratoPdf', ['venta'=>$venta]);
+                return $pdf->inline('Venta '.$venta->numero.'.pdf');
+
+            }else{
+                $request->session()->flash('info','Debe aprobar la venta para acceder al documento de contrato de venta');
+            }
+        }else{
+            $request->session()->flash('info','Primero actualice información porfavor');
+        }
+        return redirect()->route('contratoVenta',$venta->id);
+    }
+
+    public function ventasEnPropiedad(VentasEnPropiedadDataTable $dataTable,$idProp)
+    {
+        $pro=Propiedad::findOrFail($idProp);
+        return $dataTable->with('idPro',$pro->id)->render('ventas.propiedad.index');
+    }
 }

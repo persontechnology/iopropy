@@ -6,5 +6,5 @@
     <a href="{{ route('informacionPropiedad',$pro->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Información">
             <i class="fas fa-question"></i>
     </a>
-    <button type="button" class="btn btn-secondary">Right</button>        
+    
 </div>

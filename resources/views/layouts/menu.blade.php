@@ -23,7 +23,7 @@
             <div class="sidebar-user-material-body">
                 <div class="card-body text-center">
                     <a href="#">
-                        <img src="{{ asset('img/users/face6.jpg') }}" class="img-fluid rounded-circle shadow-1 mb-3" width="80" height="80" alt="">
+                        <img src="{{ asset('img/hombre.png') }}" class="img-fluid rounded-circle img-thumbnail shadow-1 mb-3" width="80" height="80" alt="">
                     </a>
                     <h6 class="mb-0 text-white text-shadow-dark">{{ Auth::user()->name }}</h6>
                     <span class="font-size-sm text-white text-shadow-dark">{{ Auth::user()->email }}</span>
@@ -39,16 +39,18 @@
             <div class="collapse" id="user-nav">
                 <ul class="nav nav-sidebar">
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a href="{{ route('miPerfil') }}" class="nav-link">
                             <i class="icon-user-plus"></i>
                             <span>Mi perfil</span>
                         </a>
                     </li>
                     
                     <li class="nav-item">
-                        <a href="#" class="nav-link">
+                        <a class="nav-link" href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                                      document.getElementById('logout-form').submit();">
                             <i class="icon-switch2"></i>
-                            <span>Logout</span>
+                            <span>Salir</span>
                         </a>
                     </li>
                 </ul>
@@ -63,7 +65,7 @@
 
                 <li class="nav-item">
                     <a href="{{ route('home') }}" class="nav-link" id="m_home">
-                        <i class="fas fa-globe-europe"></i> <span>Inicio</span>
+                        <i class="fas fa-home"></i> <span>Inicio</span>
                     </a>
                 </li>
 

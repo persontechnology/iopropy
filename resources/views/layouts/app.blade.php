@@ -59,7 +59,7 @@
 <body>
 
     <!-- Main navbar -->
-    <div class="navbar navbar-expand-md navbar-dark bg-indigo navbar-static">
+    <div class="navbar navbar-expand-md navbar-dark bg-success navbar-static">
         <div class="navbar-brand">
             <a href="{{ url('/') }}" class="d-inline-block">
                 <img src="{{ asset('img/logo.png') }}" alt="">

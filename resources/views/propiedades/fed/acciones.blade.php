@@ -6,6 +6,10 @@
     <a href="{{ route('informacionPropiedadFed',$pro->id) }}" class="btn btn-primary" data-toggle="tooltip" data-placement="left" title="Información">
             <i class="fas fa-question"></i>
     </a>
-    <button type="button" class="btn btn-secondary">Right</button>        
+
+    <a href="{{ route('ventasEnPropiedad',$pro->id) }}" class="btn btn-dark" data-toggle="tooltip" data-placement="left" title="Ventas">
+        <i class="fas fa-shopping-cart"></i>
+    </a>
+    
 </div>
     
