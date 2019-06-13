@@ -17,7 +17,12 @@ class VentasDataTable extends DataTable
     {
         return datatables($query)
             ->editColumn('propiedad_id',function($ve){
-                return '<a href="'.route('informacionPropiedadFed',$ve->propiedad->id).'">'.$ve->propiedad->codigo.'</a>';
+                return view('ventas.propiedad.info',['ve'=>$ve])->render();
+            })
+            ->filterColumn('propiedad_id', function($query, $keyword) {
+                $query->whereHas('propiedad', function($query) use ($keyword) {
+                    $query->whereRaw("codigo like ?", ["%{$keyword}%"]);
+                });
             })
             ->editColumn('created_at',function($ve){
                 return $ve->created_at.' '.$ve->created_at->diffForHumans();
@@ -83,9 +88,9 @@ class VentasDataTable extends DataTable
             'numero'=>['title'=>'Número de venta'],
             'medidaTotal',
             'estado',
-            'propiedad_id',
-            'created_at',
-            'updated_at'
+            'propiedad_id'=>['title'=>'Propiedad'],
+            'created_at'=>['title'=>'Creado'],
+            'updated_at'=>['title'=>'Última actualización']
         ];
     }
 

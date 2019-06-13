@@ -28,7 +28,7 @@ class MisPropiedadesDataTable extends DataTable
             }return 'no';
         })
         ->addColumn('action', function($pro){
-            return view('propiedades.fed.acciones',['pro'=>$pro])->render();
+            return view('propiedades.acciones',['pro'=>$pro])->render();
         });;
     }
 
@@ -55,7 +55,7 @@ class MisPropiedadesDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumns())
                     ->minifiedAjax()
-                    ->addAction(['width' => '80px'])
+                    ->addAction(['width' => '80px','printable' => false, 'exportable' => false,'title'=>'Acciones'])
                     ->parameters($this->getBuilderParameters());
     }
 
@@ -69,11 +69,11 @@ class MisPropiedadesDataTable extends DataTable
     {
         return [
             
-            'codigo',
+            'codigo'=>['title'=>'Código'],
             'medidaTotal',
             'precioEstimado',
             'tieneCasa',
-            'camino',
+            'camino'=>['title'=>'Tiene camino'],
             'serviciosBasicos'=>['title'=>' Servicios Básicos'],
             
         ];

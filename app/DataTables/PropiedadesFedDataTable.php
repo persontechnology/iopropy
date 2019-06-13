@@ -42,7 +42,7 @@ class PropiedadesFedDataTable extends DataTable
         return $this->builder()
                     ->columns($this->getColumnsTable())
                     ->minifiedAjax()
-                    ->addAction(['width' => '80px'])
+                    ->addAction(['width' => '80px','printable' => false, 'exportable' => false,'title'=>'Acciones'])
                     ->parameters($this->getBuilderParameters());
     }
 
@@ -69,13 +69,13 @@ class PropiedadesFedDataTable extends DataTable
     {
         return [
             
-            'codigo',
+            'codigo'=>['title'=>'Código'],
             'medidaTotal',
             'precioEstimado',
             'tieneCasa',
             'camino',
             'serviciosBasicos'=>['title'=>' Servicios Básicos'],
-            'created_at'
+            'created_at'=>['title'=>'Creado']
         ];
     }
 

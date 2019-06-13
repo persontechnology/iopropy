@@ -15,6 +15,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+// estaticas
+Route::get('acerca-nosotros', 'Estaticas@nosotros')->name('nosotros');
+Route::get('noticias', 'Estaticas@noticias')->name('noticias');
+Route::get('noticias-detalle/{idNot}', 'Estaticas@detalleNoticia')->name('detalleNoticia');
+Route::get('contactos', 'Estaticas@contactos')->name('contactos');
+Route::post('contactos-enviar', 'Estaticas@contactosEnviar')->name('contactosEnviar');
+
+
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -91,6 +100,14 @@ Route::group(['middleware' => ['role:Administrador']], function () {
     // ventas en propiedad
     Route::get('/ventas-en-propiedad/{idPro}','Ventas@ventasEnPropiedad')->name('ventasEnPropiedad');
     
+    // noticias admin
+    Route::get('/noticias-admin','Noticias@index')->name('noticiasAdmin');
+    Route::get('/noticias-admin-nuevo','Noticias@noticiaNuevo')->name('noticiaNuevo');
+    Route::post('/noticias-admin-guardar','Noticias@guardarNoticia')->name('guardarNoticia');
+    Route::get('/noticias-admin-estado/{id}','Noticias@estadoNoticia')->name('estadoNoticia');
+    Route::get('/noticias-admin-eliminar/{id}','Noticias@eliminarNoticia')->name('eliminarNoticia');
+    Route::get('/noticias-admin-editar/{id}','Noticias@editarNoticia')->name('editarNoticia');
+    Route::post('/noticias-admin-actualizar','Noticias@actualizarNoticia')->name('actualizarNoticia');
     
     
 });

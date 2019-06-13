@@ -11,7 +11,7 @@
         @isset($title)
             {{ $title }} | 
         @endisset
-        {{ config('app.name', 'PROPIEDAD') }}
+        {{ config('app.name', 'FICSH') }}
     </title>
     <link rel='shortcut icon' type='image/x-icon' href='{{ asset('/img/favicon.ico') }}' />
      <!-- Scripts -->
@@ -54,12 +54,19 @@
     {{-- others --}}
     <script src="{{ asset('vendor/datatables/buttons.server-side.js') }}"></script>
 
+    <style>
+            
+            .colorapp{
+                background-color: #00695c!important;
+            }
+    </style>
+
 </head>
 
 <body>
 
     <!-- Main navbar -->
-    <div class="navbar navbar-expand-md navbar-dark bg-success navbar-static">
+    <div class="navbar navbar-expand-md navbar-dark bg-success navbar-static colorapp">
         <div class="navbar-brand">
             <a href="{{ url('/') }}" class="d-inline-block">
                 <img src="{{ asset('img/logo.png') }}" alt="">

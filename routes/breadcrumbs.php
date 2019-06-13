@@ -191,3 +191,41 @@ Breadcrumbs::for('infoVenta', function ($trail,$venta) {
     $trail->push('Venta '.$venta->numero, route('infoVenta',$venta->id));
 });
 
+// estaticas
+
+Breadcrumbs::for('nosotros', function ($trail) {
+    $trail->parent('inicio');
+    $trail->push('Acerca de nosotros', route('nosotros'));
+});
+Breadcrumbs::for('noticias', function ($trail) {
+    $trail->parent('inicio');
+    $trail->push('Noticias', route('noticias'));
+});
+Breadcrumbs::for('detalleNoticia', function ($trail,$noticia) {
+    $trail->parent('noticias');
+    $trail->push('Detalle de la noticia', route('detalleNoticia',$noticia->id));
+});
+
+Breadcrumbs::for('contactos', function ($trail) {
+    $trail->parent('inicio');
+    $trail->push('Contactos', route('contactos'));
+});
+
+
+// noticias
+Breadcrumbs::for('noticiasAdmin', function ($trail) {
+    $trail->parent('home');
+    $trail->push('Noticias', route('noticiasAdmin'));
+});
+
+Breadcrumbs::for('noticiaNuevo', function ($trail) {
+    $trail->parent('noticiasAdmin');
+    $trail->push('Nueva noticia', route('noticiaNuevo'));
+});
+
+
+Breadcrumbs::for('editarNoticia', function ($trail,$noticia) {
+    $trail->parent('noticiasAdmin');
+    $trail->push('Editar noticia', route('editarNoticia',$noticia->id));
+});
+

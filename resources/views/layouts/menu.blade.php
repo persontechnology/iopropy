@@ -108,6 +108,11 @@
                         <i class="fas fa-map-marker-alt"></i> <span>Comunidades</span>
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a href="{{ route('noticiasAdmin') }}" class="nav-link" id="m_noticia">
+                                <i class="fas fa-rss"></i> <span>Noticias</span>
+                        </a>
+                    </li>
 
 
                 @endrole
