@@ -22,7 +22,7 @@ class Roles extends Seeder
          $user= User::firstOrCreate([
             'name' => 'Paul Sasha',
             'email' => 'info@propiedad.com',
-            'password' => Hash::make('12345678'),
+            'password' => Hash::make('admin.2019'),
         ]);
          $user->assignRole('Administrador');
     }

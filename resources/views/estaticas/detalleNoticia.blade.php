@@ -7,7 +7,6 @@
 <meta property="og:url"                content="{{ route('detalleNoticia',$n->id) }}" />
 <meta property="og:type"               content="article" />
 <meta property="og:title"              content="{{ $n->titulo }}" />
-<meta property="og:description"        content="{!!$n->detalle!!}" />
 <meta property="og:image"              content="{{ Storage::url('public/noticias/'.$n->imagen) }}" />
 
 
