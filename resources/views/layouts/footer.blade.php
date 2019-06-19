@@ -13,7 +13,7 @@
         </span>
 
         <ul class="navbar-nav ml-lg-auto">
-            <li class="nav-item"><a href="https://soysoftware.com/contactos" class="navbar-nav-link" target="_blank"><i class="icon-lifebuoy mr-2"></i> Soporte</a></li>
+            <li class="nav-item"><a href="#" class="navbar-nav-link" target="_blank"><i class="icon-lifebuoy mr-2"></i> Soporte</a></li>
         </ul>
     </div>
 </div>

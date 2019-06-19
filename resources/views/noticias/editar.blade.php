@@ -1,4 +1,4 @@
-@extends('layouts.app',['title'=>'Autoridades'])
+@extends('layouts.app',['title'=>'Editar noticias'])
 @section('breadcrumbs', Breadcrumbs::render('editarNoticia',$n)) 
 @section('acciones')
 

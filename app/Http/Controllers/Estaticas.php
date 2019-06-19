@@ -41,7 +41,7 @@ class Estaticas extends Controller
     public function contactosEnviar(RqContacto $r)
     {
     	$data = array('email' => $r->email,'nombre'=>$r->nombre,'asunto'=>$r->asunto,'mensaje'=>$r->mensaje );
-    	Mail::to(config('MAIL_FROM_ADDRESS','david.criollo14@gmail.com'))->send(new EmailContacto($data));
+    	Mail::to(config('MAIL_FROM_ADDRESS','taishaalex123@gmail.com'))->send(new EmailContacto($data));
     	$r->session()->flash('success','FICSH te da la bienvenida y gracias por escribirnos. Intentaremos responderte lo antes posible.');
     	return redirect()->route('contactos');
     }
