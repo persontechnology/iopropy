@@ -26,7 +26,7 @@ Route::get('noticias', 'Estaticas@noticias')->name('noticias');
 Route::get('noticias-detalle/{idNot}', 'Estaticas@detalleNoticia')->name('detalleNoticia');
 Route::get('contactos', 'Estaticas@contactos')->name('contactos');
 Route::post('contactos-enviar', 'Estaticas@contactosEnviar')->name('contactosEnviar');
-
+Route::get('soporte', 'Estaticas@soporte')->name('soporte');
 
 
 Auth::routes();

@@ -45,4 +45,9 @@ class Estaticas extends Controller
     	$r->session()->flash('success','FICSH te da la bienvenida y gracias por escribirnos. Intentaremos responderte lo antes posible.');
     	return redirect()->route('contactos');
     }
+
+    public function soporte()
+    {
+        return view('estaticas.soporte');
+    }
 }

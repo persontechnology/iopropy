@@ -229,3 +229,9 @@ Breadcrumbs::for('editarNoticia', function ($trail,$noticia) {
     $trail->push('Editar noticia', route('editarNoticia',$noticia->id));
 });
 
+// soporte
+
+Breadcrumbs::for('soporte', function ($trail) {
+    $trail->parent('inicio');
+    $trail->push('Soporte', route('soporte'));
+});
