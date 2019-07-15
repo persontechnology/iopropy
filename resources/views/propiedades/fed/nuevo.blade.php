@@ -243,6 +243,6 @@
 </div>
 
 <script>
-    $('#m_autoridades').addClass('active');
+    $('#m_propiedades').addClass('active');
 </script>
 @endsection

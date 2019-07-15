@@ -101,7 +101,11 @@ Route::group(['middleware' => ['role:Administrador']], function () {
     Route::get('/ventas-contrato/{idVenta}','Ventas@contrato')->name('contratoVenta');
     Route::post('/ventas-actualizar','Ventas@actualizarContrato')->name('actualizarContrato');
     Route::get('/ventas-contrato-pdf/{idVenta}','Ventas@contratoPdf')->name('contratoPdf');
-
+    // archivos
+    Route::get('/archivos/{idVenta}','Archivos@index')->name('archivos');
+    Route::post('/archivos-guardar','Archivos@guardar')->name('archivoGuardar');
+    Route::get('/archivos-ordenar','Archivos@ordenar')->name('archivosOrdenar');
+    Route::post('/archivos-eliminar/idArchivo','Archivos@eliminar')->name('archivoEliminar');
     // ventas en propiedad
     Route::get('/ventas-en-propiedad/{idPro}','Ventas@ventasEnPropiedad')->name('ventasEnPropiedad');
     

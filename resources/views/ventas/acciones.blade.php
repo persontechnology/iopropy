@@ -27,6 +27,9 @@
             <a href="{{ route('contratoVenta',$venta->id) }}" class="btn btn-dark" data-toggle="tooltip" data-placement="top" title="Contrato de compra y venta">
                 <i class="fas fa-file-word"></i>
             </a>
+            <a href="{{ route('archivos',$venta->id) }}" class="btn btn-secondary" data-toggle="tooltip" data-placement="top" title="Archivos de respaldo">
+                <i class="fas fa-server"></i>
+            </a>
             @break
     @endswitch
     

@@ -51,7 +51,7 @@
             <td>{{ $propiedad->linderoOesteCon }}</td>
           </tr>
           <tr>
-            <th colspan="4" class="text-center">Propierios antiguos</th>
+            <th colspan="4" class="text-center">Propietarios antiguos</th>
           </tr>
           <tr>
             <td colspan="4">
@@ -78,7 +78,7 @@
             </td>
           </tr>
           <tr>
-            <th colspan="4" class="text-center">Propierios actuales</th>
+            <th colspan="4" class="text-center">Propietarios actuales</th>
           </tr>
           <tr>
             <td colspan="4">

@@ -92,11 +92,11 @@
             <li class="nav-item">
 				@auth
 					<a href="{{ route('home') }}" class="nav-link border border-light rounded">
-						<i class="fab fa-github mr-2"></i>Administración
+						<i class="fas fa-house-damage mr-2"></i>Administración
 					</a>
 				@else
 				<a href="{{ route('login') }}" class="nav-link border border-light rounded">
-					<i class="fab fa-github mr-2"></i>INGRESAR
+					<i class="fas fa-sign-in-alt mr-2"></i>INGRESAR
 				</a>
 
 				@endauth

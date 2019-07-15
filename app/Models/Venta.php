@@ -3,6 +3,7 @@
 namespace iopro\Models;
 use iopro\User;
 use iopro\Models\Propiedad;
+use iopro\Models\Archivo;
 use Illuminate\Database\Eloquent\Model;
 
 class Venta extends Model
@@ -36,6 +37,11 @@ class Venta extends Model
         }
         return null;
         
+    }
+
+    public function archivos()
+    {
+        return $this->hasMany(Archivo::class);
     }
 
 }
