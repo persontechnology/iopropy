@@ -23,7 +23,7 @@
  <div class="card h-100">
     <div class="card-header">
         <button type="submit" class="btn btn-lg btn-success">
-                <i class="fas fa-save"></i> Actualizar contrato
+                <i class="fas fa-save"></i> Confirmar documento
         </button>
         <a href="{{ route('contratoPdf',$venta->id) }}" class="btn btn-lg btn-warning">
             <i class="fas fa-file-pdf"></i> Descargar PDF
