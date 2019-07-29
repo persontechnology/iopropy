@@ -15,9 +15,16 @@
 
 
 @section('content')
+
+<script src="{{ asset('vendor/validate/jquery.validate.min.js') }}"></script>
+<script src="{{ asset('vendor/validate/messages_es.min.js') }}"></script>
+<script src="{{ asset('vendor/validate/jquery_validate_extras.js') }}"></script>
+
+
+
 <div class="card">
   <div class="card-body">
-    <form action="{{ route('guardarUsuario') }}" method="post">
+    <form action="{{ route('guardarUsuario') }}" method="post" id="formNuevo">
       @csrf
               <fieldset>
                   <legend class="font-weight-semibold"><i class="icon-reading mr-2"></i> Detalle personal</legend>
@@ -187,5 +194,39 @@
             $('#identificacion').val('')
         }
     });
+
+
+    $('#formNuevo').validate(
+        {
+            rules:{
+                identificacion:{
+                    cedula:true
+                }
+            },
+            errorElement: "em",
+            errorPlacement: function ( error, element ) {
+                // Add the `invalid-feedback` class to the error element
+                error.addClass( "invalid-feedback" );
+
+                if ( element.prop( "type" ) === "checkbox" ) {
+                    error.insertAfter( element.next( "label" ) );
+                } else {
+                    error.insertAfter( element );
+                }
+            },
+            highlight: function ( element, errorClass, validClass ) {
+                $( element ).addClass( "is-invalid" ).removeClass( "is-valid" );
+            },
+            unhighlight: function (element, errorClass, validClass) {
+                $( element ).addClass( "is-valid" ).removeClass( "is-invalid" );
+            }
+        }
+    );
+
+
+
+
 </script>
+
+
 @endsection
