@@ -132,6 +132,12 @@
                 </li>
                 @endrole
 
+                <li class="nav-item">
+                    <a href="{{ route('reportes') }}" class="nav-link" id="m_reportes">
+                        <i class="fas fa-chart-pie"></i><span>Reportes</span>
+                    </a>
+                </li>
+
               
 
             </ul>

@@ -22,12 +22,13 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index(MisPropiedadesDataTable $dataTable)
+    
+    public function index()
+    {
+        return view('home');
+    }
+
+    public function reportes(MisPropiedadesDataTable $dataTable)
     {
         $ventaXAnioActual=Venta::whereYear('created_at', '=', date('Y'))->sum('precio');
         $ventasMesesActuales= Venta::select(
@@ -53,7 +54,7 @@ class HomeController extends Controller
             'ventasMesesActuales'=>$ventasMesesActuales,
             'ventasAnios'=>$ventasAnios
         );
-        return $dataTable->with('idUser',Auth::user()->id)->render('home',$data);
+        return $dataTable->with('idUser',Auth::user()->id)->render('reportes.index',$data);
     }
 
 

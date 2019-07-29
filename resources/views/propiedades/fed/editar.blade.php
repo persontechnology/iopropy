@@ -140,7 +140,7 @@
     
                         {{--  servivicios basico  --}}
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" >Servicios básicos:<span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" >Tiene servicios básicos:<span class="text-danger">*</span></label>
                             <div class="custom-control custom-radio">
                                 <input type="radio" class="custom-control-input {{ $errors->has('serviciosBasicos') ? ' is-invalid' : '' }}" value="1" id="serviciosBasicosSi" name="serviciosBasicos"  required {{ old('serviciosBasicos',$propiedad->serviciosBasicos)=='1'?'checked':'checked' }}>
                                 <label class="custom-control-label" for="serviciosBasicosSi">Si</label>
@@ -160,7 +160,7 @@
                         {{--  tiene cas  --}}
     
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" >Casa:<span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" >Tiene casa:<span class="text-danger">*</span></label>
                             <div class="custom-control custom-radio">
                                 <input type="radio" class="custom-control-input {{ $errors->has('tieneCasa') ? ' is-invalid' : '' }}" value="1" id="tieneCasaSi" name="tieneCasa"  required {{ old('tieneCasa',$propiedad->tieneCasa)=='1'?'checked':'checked' }}>
                                 <label class="custom-control-label" for="tieneCasaSi">Si</label>
@@ -178,7 +178,7 @@
                         </div>
                         {{--  camino  --}}
                         <div class="form-group row">
-                            <label class="col-lg-3 col-form-label" >Camino:<span class="text-danger">*</span></label>
+                            <label class="col-lg-3 col-form-label" >Tiene camino:<span class="text-danger">*</span></label>
                             <div class="custom-control custom-radio">
                                 <input type="radio" class="custom-control-input {{ $errors->has('camino') ? ' is-invalid' : '' }}" value="1" id="CaminoSi" name="camino"  required {{ old('camino',$propiedad->camino)=='1'?'checked':'checked' }}>
                                 <label class="custom-control-label" for="CaminoSi">Si</label>

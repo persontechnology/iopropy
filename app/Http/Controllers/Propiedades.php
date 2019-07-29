@@ -74,7 +74,7 @@ class Propiedades extends Controller
             DB::beginTransaction();
             $pro=new Propiedad;
             $pro->codigo=$request->codigo;
-            $pro->medidaTotal=$request->medidaTotal;
+            $pro->medidaTotal=$request->medidaTotal.' '.$request->medida;
             $pro->linderoNorteCon=$request->linderoNorteCon;
             $pro->linderoSurCon=$request->linderoSurCon;
             $pro->linderoEsteCon=$request->linderoEsteCon;

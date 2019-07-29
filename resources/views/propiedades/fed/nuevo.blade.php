@@ -49,17 +49,28 @@
                     </div>
                 </div>
 
-                  <div class="form-group row">
-                      <label class="col-lg-3 col-form-label" for="medidaTotal">Medida total:<span class="text-danger">*</span></label>
-                      <div class="col-lg-9">
-                          <input type="text" class="form-control{{ $errors->has('medidaTotal') ? ' is-invalid' : '' }}" name="medidaTotal" id="medidaTotal" placeholder="Ingrese.." required="" value="{{ old('medidaTotal') }}">
-                          @if ($errors->has('medidaTotal'))
-                              <span class="invalid-feedback" role="alert">
-                                  <strong>{{ $errors->first('medidaTotal') }}</strong>
-                              </span>
-                          @endif
-                      </div>
-                  </div>
+                <div class="form-group row">
+                    <label class="col-lg-3 col-form-label" for="medidaTotal">Medida total:<span class="text-danger">*</span></label>
+                    <div class="col-lg-6">
+                        <input type="text" class="form-control{{ $errors->has('medidaTotal') ? ' is-invalid' : '' }}" name="medidaTotal" id="medidaTotal" placeholder="Ingrese.." required="" value="{{ old('medidaTotal') }}">
+                        @if ($errors->has('medidaTotal'))
+                            <span class="invalid-feedback" role="alert">
+                                <strong>{{ $errors->first('medidaTotal') }}</strong>
+                            </span>
+                        @endif
+                    </div>
+                        <div class="col-lg-3">
+                            <select class="form-control" id="exampleFormControlSelect1" required name="medida">
+                                <option>Km<sup>2</sup></option>
+                                <option>m<sup>2</sup></option>
+                                <option>Hectárea</option>
+                                <option>Centiárea</option>
+                                <option>Yard<sup>2</sup></option>
+                                <option>Pie<sup>2</sup></option>
+                                <option>Otro</option>
+                            </select>
+                        </div>
+                </div>
 
                   {{--  lindero norte  --}}
                   <div class="form-group row">
@@ -141,7 +152,7 @@
 
                 {{--  servivicios basico  --}}
                 <div class="form-group row">
-                    <label class="col-lg-3 col-form-label" >Servicios básicos:<span class="text-danger">*</span></label>
+                    <label class="col-lg-3 col-form-label" >Tiene servicios básicos:<span class="text-danger">*</span></label>
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input {{ $errors->has('serviciosBasicos') ? ' is-invalid' : '' }}" value="1" id="serviciosBasicosSi" name="serviciosBasicos"  required {{ old('serviciosBasicos')=='1'?'checked':'checked' }}>
                         <label class="custom-control-label" for="serviciosBasicosSi">Si</label>
@@ -161,7 +172,7 @@
                 {{--  tiene cas  --}}
 
                 <div class="form-group row">
-                    <label class="col-lg-3 col-form-label" >Casa:<span class="text-danger">*</span></label>
+                    <label class="col-lg-3 col-form-label" >Tiene casa:<span class="text-danger">*</span></label>
                     <div class="custom-control custom-radio">
                         <input type="radio" class="custom-control-input {{ $errors->has('tieneCasa') ? ' is-invalid' : '' }}" value="1" id="tieneCasaSi" name="tieneCasa"  required {{ old('tieneCasa')=='1'?'checked':'checked' }}>
                         <label class="custom-control-label" for="tieneCasaSi">Si</label>

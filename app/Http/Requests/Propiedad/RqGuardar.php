@@ -40,6 +40,7 @@ class RqGuardar extends FormRequest
             "propietariosAntiguo.*"  => "required|exists:users,id",
             "propietariosActuales"    => "required|array|min:1",
             "propietariosActuales.*"  => "required|exists:users,id",
+            "medida"=>'required'
         ];
     }
 }

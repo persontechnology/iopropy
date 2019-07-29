@@ -59,7 +59,12 @@
             .colorapp{
                 background-color: #00695c!important;
             }
+            form input[type="text"] {
+                text-transform: uppercase;
+            }
+           
     </style>
+
 
 </head>
 

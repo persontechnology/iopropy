@@ -35,6 +35,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/mi-perfil', 'HomeController@miperfil')->name('miPerfil');
 Route::post('/mi-perfil-actualizar', 'HomeController@miperfilActualizar')->name('actualizarPerfil');
 
+// reportes
+Route::get('/reportes', 'HomeController@reportes')->name('reportes');
+
+
 Route::group(['middleware' => ['role:Administrador']], function () {
 
     Route::get('/cantones', 'Cantones@index')->name('cantones');
